@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pixelect</title>
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Pixelect</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#/users">Users</a></li>
+                <li><a href="#/image_sets">Image Sets</a></li>
+                <li><a href="#/images">Images</a></li>
+                <li><a href="#/comments">Comments</a></li>
+                <li><a href="#/likes">Likes</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+	<div id="content"></div>
+</div>
+
+
+<script id="usersTemplate" type="text/x-handlebars-template">
+    <h1>Users</h1>
+    
+    // will edit based on user attributes
+     <ul>
+        {{#each user}}
+            <li><a href {{ this.email }}>{{ this.username }}</a><br></li>
+        {{/each}}
+    </ul>
+</script>
+
+<script id="imageSetsTemplate" type="text/x-handlebars-template">
+    <h1>Image Sets</h1>
+
+    // will edit based on image_set attributes
+     <ul>
+        {{#each image_set}}
+            <li><a href {{ this.url }}>{{ this.title }}</a><br></li>
+        {{/each}}
+    </ul>
+</script>
+
+<script id="imagesTemplate" type="text/x-handlebars-template">
+    <h1>Images</h1>
+
+    // will edit based on final image attributes
+     <ul>
+        {{#each image}}
+            <li>{{ this.file_name }} {{ this.likes }}<br></li>
+        {{/each}}
+    </ul>
+</script>
+
+<script id="commentsTemplate" type="text/x-handlebars-template">
+    <h1>Comments</h1>
+
+    // will edit based on final comment attributes
+     <ul>
+        {{#each comment}}
+            <li>{{ this.body }}<br></li>
+        {{/each}}
+    </ul>
+</script>
+
+
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/backbone/backbone.js"></script>
+<script src="bower_components/handlebars/handlebars.js"></script>
+<script src="js/app.js" type="text/javascript"></script>
+
+</body>
+</html>
