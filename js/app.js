@@ -49,6 +49,34 @@ var Router = Backbone.Router.extend({
         });
     }, 
 
+
+    // postImages: function() {
+    //     $.ajax({
+    //         url: 'https://pixelect-rails-api.herokuapp.com/images',
+    //         type: 'POST',
+    //         // data: { image: { 
+    //         //             file_name: '',
+    //         //             image_url: '',
+    //         //             flag: 0,
+    //         //             image_set_id: '',
+    //         //             created_at: ,
+    //         //             updated_at: 
+    //         //             }
+    //         //         }
+    //         data: { image: { 
+    //                     file_name: 'red line',
+    //                     image_url: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/1226491/6JCmWkMbIiZofmI/2px-2col-1w-0gut.png',
+    //                     image_file: '/Users/laurenfazah/Desktop/this.jpg',
+    //                     flag: 0,
+    //                     image_set_id: 1,
+    //                     }
+    //                 }
+    //     }).done(function(response) {
+    //         console.table(response);
+    //     });
+    // },
+
+
     images: function() {
       $('#content').empty();
 
@@ -56,41 +84,13 @@ var Router = Backbone.Router.extend({
             url: 'https://pixelect-rails-api.herokuapp.com/images',
             type: 'GET'
         }).done(function(response) {
-            console.log(response);
+            // console.log(response);
             var template = Handlebars.compile($('#imagesTemplate').html());
               $('#content').html(template({
                 image: response
             }));
         });
     },
-
-    postImages: function() {
-        $.ajax({
-            url: 'https://pixelect-rails-api.herokuapp.com/images',
-            type: 'POST',
-            // data: { image: { 
-            //             file_name: '',
-            //             image_url: '',
-            //             flag: 0,
-            //             image_set_id: '',
-            //             created_at: ,
-            //             updated_at: 
-            //             }
-            //         }
-            data: { image: { 
-                        file_name: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/1226491/6JCmWkMbIiZofmI/2px-2col-1w-0gut.png',
-                        image_url: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/1226491/6JCmWkMbIiZofmI/2px-2col-1w-0gut.png',
-                        flag: 0,
-                        image_set_id: '',
-                        created_at: ,
-                        updated_at: 
-                        }
-                    }
-        }).done(function(response) {
-            console.table(response);
-        });
-    }
-
 
 
     comments: function() {
