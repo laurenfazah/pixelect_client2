@@ -1,3 +1,48 @@
+* {
+	
+}
+
 #content {
 	padding-top: 50px;
+}
+
+#custom_header {
+	background-color: #408f92;
+	border-color: #408f92;
+	color: #fdfdfd;
+	height: 60px;
+	font-size: 110%;
+	vertical-align: center;
+}
+
+#navbar_brand_custom {
+	color: #fdfdfd;
+}
+
+#navbar_list_custom {
+	color: #fdfdfd;
+}
+
+#nav_custom1 {
+	color: #fdfdfd;
+}
+
+#nav_custom2 {
+	color: #fdfdfd;
+}
+
+#nav_custom3  {
+	color: #fdfdfd;
+}
+
+#nav_custom4 {
+	color: #fdfdfd;
+}
+
+#nav_custom5 {
+	color: #fdfdfd;
+}
+
+#nav_custom6 {
+	color: #fdfdfd;
 }
