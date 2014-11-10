@@ -1,7 +1,6 @@
 var Router = Backbone.Router.extend({
     routes: {
         '': 'home',
-        'home': 'home', 
         'users': 'users', 
         'image_sets': 'image_sets',
         'images': 'images',

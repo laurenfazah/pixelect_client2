@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hacker News</title>
+<title>Pixelect</title>
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="css/app.css">
 </head>
@@ -19,14 +19,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Hacker News</a>
+            <a class="navbar-brand" href="#">Pixelect</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="#">Home</a></li>
-                <li><a href="#/about">About</a></li>
                 <li><a href="#/users">Users</a></li>
-                <li><a href="#/posts">Posts</a></li>
+                <li><a href="#/image_sets">Image Sets</a></li>
+                <li><a href="#/images">Images</a></li>
+                <li><a href="#/comments">Comments</a></li>
+                <li><a href="#/likes">Likes</a></li>
             </ul>
         </div>
     </div>
@@ -37,16 +39,11 @@
 	<div id="content"></div>
 </div>
 
-<script id="aboutTemplate" type="text/x-handlebars-template">
-    <h1>About Page</h1>
-    
-    <p>Hello {{ name }}</p>
-</script>
 
 <script id="usersTemplate" type="text/x-handlebars-template">
     <h1>Users</h1>
     
-
+    // will edit based on user attributes
      <ul>
         {{#each user}}
             <li><a href {{ this.email }}>{{ this.username }}</a><br></li>
@@ -54,16 +51,39 @@
     </ul>
 </script>
 
-<script id="postsTemplate" type="text/x-handlebars-template">
-    <h1>Posts</h1>
-    
+<script id="imageSetsTemplate" type="text/x-handlebars-template">
+    <h1>Image Sets</h1>
 
+    // will edit based on image_set attributes
      <ul>
-        {{#each post}}
+        {{#each image_set}}
             <li><a href {{ this.url }}>{{ this.title }}</a><br></li>
         {{/each}}
     </ul>
 </script>
+
+<script id="imagesTemplate" type="text/x-handlebars-template">
+    <h1>Images</h1>
+
+    // will edit based on final image attributes
+     <ul>
+        {{#each image}}
+            <li>{{ this.file_name }} {{ this.likes }}<br></li>
+        {{/each}}
+    </ul>
+</script>
+
+<script id="commentsTemplate" type="text/x-handlebars-template">
+    <h1>Comments</h1>
+
+    // will edit based on final comment attributes
+     <ul>
+        {{#each comment}}
+            <li>{{ this.body }}<br></li>
+        {{/each}}
+    </ul>
+</script>
+
 
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
