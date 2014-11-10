@@ -5,7 +5,8 @@ var Router = Backbone.Router.extend({
         'image_sets': 'image_sets',
         'images': 'images',
         'comments': 'comments',
-        'likes': 'likes'
+        'likes': 'likes',
+        'postImages': 'postImages'
     },
     
     home: function() {
@@ -62,6 +63,35 @@ var Router = Backbone.Router.extend({
             }));
         });
     },
+
+    postImages: function() {
+        $.ajax({
+            url: 'https://pixelect-rails-api.herokuapp.com/images',
+            type: 'POST',
+            // data: { image: { 
+            //             file_name: '',
+            //             image_url: '',
+            //             flag: 0,
+            //             image_set_id: '',
+            //             created_at: ,
+            //             updated_at: 
+            //             }
+            //         }
+            data: { image: { 
+                        file_name: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/1226491/6JCmWkMbIiZofmI/2px-2col-1w-0gut.png',
+                        image_url: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/1226491/6JCmWkMbIiZofmI/2px-2col-1w-0gut.png',
+                        flag: 0,
+                        image_set_id: '',
+                        created_at: ,
+                        updated_at: 
+                        }
+                    }
+        }).done(function(response) {
+            console.table(response);
+        });
+    }
+
+
 
     comments: function() {
       $('#content').empty();
