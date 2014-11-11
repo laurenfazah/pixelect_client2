@@ -66,10 +66,11 @@ var Router = Backbone.Router.extend({
 // this will bring you to a specific image set page, although you need to click twice.
 // another perticularity is that if you just go to http://.....#/image_sets/1 you wont get the page, you have to click on the front page link.
      image_sets: function(e) {
-        $('#myCarousel').hide();
+
         // e.preventDefault();
         $('.see-image-set').on('click', function() {
             $('#content').empty();
+            $('#myCarousel').hide();
                 $.ajax({
                     url: 'https://pixelect-rails-api.herokuapp.com/image_sets/'+$(this).data("id") , //changed form /image_sets
                     type: 'GET'
