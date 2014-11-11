@@ -38,11 +38,20 @@
 <div class="container">
 	<div id="content"></div>
 </div>
+<script id="homePicSetsTemplate" type="text/x-handlebars-template">
+    <h1>Picture Sets</h1>
 
+    // will edit based on user attributes
+     <ul>
+        {{#each picSet}}
+            <li><a href > {{ this.voting_criteria }}</a><br></li>
+        {{/each}}
+    </ul>
+</script>
 
 <script id="usersTemplate" type="text/x-handlebars-template">
     <h1>Users</h1>
-    
+
     // will edit based on user attributes
      <ul>
         {{#each user}}

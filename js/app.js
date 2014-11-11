@@ -15,7 +15,13 @@ var Router = Backbone.Router.extend({
             url: 'https://pixelect-rails-api.herokuapp.com', // changed from /images
             type: 'GET'
         }).done(function(response) {
-            console.table(response);
+            // var parsedResponse = jQuery.parseJSON(response)
+            // var object = response
+            console.log(response);
+            var template = Handlebars.compile($('#homePicSetsTemplate').html());
+              $('#content').html(template({
+                picSet: response
+            }));
         });
     },
 
@@ -84,7 +90,7 @@ var Router = Backbone.Router.extend({
             url: 'https://pixelect-rails-api.herokuapp.com/images',
             type: 'GET'
         }).done(function(response) {
-            // console.log(response);
+            console.log(response);
             var template = Handlebars.compile($('#imagesTemplate').html());
               $('#content').html(template({
                 image: response
