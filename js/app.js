@@ -60,10 +60,10 @@ var Router = Backbone.Router.extend({
     image_sets: function(e) {
         // e.preventDefault();
         $('#see-image-set').on('click', function() {
-            console.log($(this).id)
+            // console.log($*this).data("id"));
             $('#content').empty();
                 $.ajax({
-                    url: 'https://pixelect-rails-api.herokuapp.com/image_sets/'+$(this).id , //changed form /image_sets
+                    url: 'https://pixelect-rails-api.herokuapp.com/image_sets/'+$(this).data("id") , //changed form /image_sets
                     type: 'GET'
                 }).done(function(response) {
                     console.log(response);
