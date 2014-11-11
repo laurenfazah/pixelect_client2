@@ -29,6 +29,7 @@
                 <li><a href="#/images">Images</a></li>
                 <li><a href="#/comments">Comments</a></li>
                 <li><a href="#/likes">Likes</a></li>
+                <li><a href="#">Make a new set</a></li>
             </ul>
         </div>
     </div>
@@ -61,14 +62,11 @@
 </script>
 
 <script id="imageSetTemplate" type="text/x-handlebars-template">
-    <h1>Singular Set</h1>
+
+    <h1>{{image_set.voting_criteria}}</h1>
 
     // will edit based on image_set attributes
-     <ul>
-        {{#each image_set}}
-            <li><a href {{ this.url }}>{{ this.title }}</a><br></li>
-        {{/each}}
-    </ul>
+
 </script>
 
 <script id="imagesTemplate" type="text/x-handlebars-template">
