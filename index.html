@@ -96,7 +96,7 @@
           Recent Image Sets
           </h3>
           <div class = "container">
-            <p>Example question?</p>
+            <p class="recent_imageset"></p>
             <div class = "row">
               <div class = "col-xs-4">
               </div>
@@ -154,8 +154,13 @@
 </div>
 <script id="homePicSetsTemplate" type="text/x-handlebars-template">
     <h1>Picture Sets</h1>
-
-
+    // will edit based on user attributes
+     <ul>
+        {{#each picSet}}
+            <li><a class="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a><br></li>
+        {{/each}}
+    </ul>
+</script>
 <!-- end JS container -->
 
 <!-- <input type="file" id="pic">
