@@ -1,18 +1,18 @@
 var Router = Backbone.Router.extend({
     routes: {
         '': 'home',
-        'users': 'users', 
-        'image_sets': 'image_sets',
+        'users': 'users', // users does not exist
+        'image_sets': 'image_sets', // this is the same as root of heroku api
         'images': 'images',
         'comments': 'comments',
         'likes': 'likes',
         'postImages': 'postImages'
     },
-    
+
     home: function() {
       $('#content').empty();
         $.ajax({
-            url: 'https://pixelect-rails-api.herokuapp.com/images',
+            url: 'https://pixelect-rails-api.herokuapp.com', // changed from /images
             type: 'GET'
         }).done(function(response) {
             console.table(response);
@@ -38,7 +38,7 @@ var Router = Backbone.Router.extend({
       $('#content').empty();
 
         $.ajax({
-            url: 'https://pixelect-rails-api.herokuapp.com/image_sets',
+            url: 'https://pixelect-rails-api.herokuapp.com/image_sets', //changed form /image_sets
             type: 'GET'
         }).done(function(response) {
             console.log(response);
@@ -47,23 +47,23 @@ var Router = Backbone.Router.extend({
                 image_set: response
             }));
         });
-    }, 
+    },
 
 
     // postImages: function() {
     //     $.ajax({
     //         url: 'https://pixelect-rails-api.herokuapp.com/images',
     //         type: 'POST',
-    //         // data: { image: { 
+    //         // data: { image: {
     //         //             file_name: '',
     //         //             image_url: '',
     //         //             flag: 0,
     //         //             image_set_id: '',
     //         //             created_at: ,
-    //         //             updated_at: 
+    //         //             updated_at:
     //         //             }
     //         //         }
-    //         data: { image: { 
+    //         data: { image: {
     //                     file_name: 'red line',
     //                     image_url: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/1226491/6JCmWkMbIiZofmI/2px-2col-1w-0gut.png',
     //                     image_file: '/Users/laurenfazah/Desktop/this.jpg',
