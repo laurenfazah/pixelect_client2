@@ -41,21 +41,40 @@ var Router = Backbone.Router.extend({
         });
     },
 
-    image_sets: function() {
-      $('#content').empty();
+    // image_sets: function() {
+    //   $('#content').empty();
 
-        $.ajax({
-            url: 'https://pixelect-rails-api.herokuapp.com/image_sets', //changed form /image_sets
-            type: 'GET'
-        }).done(function(response) {
-            console.log(response);
-            var template = Handlebars.compile($('#imageSetsTemplate').html());
-              $('#content').html(template({
-                image_set: response
-            }));
-        });
+    //     $.ajax({
+    //         url: 'https://pixelect-rails-api.herokuapp.com/image_sets', //changed form /image_sets
+    //         type: 'GET'
+    //     }).done(function(response) {
+    //         console.log(response);
+    //         var template = Handlebars.compile($('#imageSetsTemplate').html());
+    //           $('#content').html(template({
+    //             image_set: response
+    //         }));
+    //     });
+    // },
+
+// this function is supposed to take you to the specific image set when the link on the home page is clicked.
+    image_sets: function(e) {
+        // e.preventDefault();
+        $('#see-image-set').on('click', function() {
+            console.log($(this).id)
+            $('#content').empty();
+                $.ajax({
+                    url: 'https://pixelect-rails-api.herokuapp.com/image_sets/'+$(this).id , //changed form /image_sets
+                    type: 'GET'
+                }).done(function(response) {
+                    console.log(response);
+                    var template = Handlebars.compile($('#imageSetTemplate').html());
+                      $('#content').html(template({
+                        image_set: response
+                    }));
+                });
+            });
+
     },
-
 
     // postImages: function() {
     //     $.ajax({

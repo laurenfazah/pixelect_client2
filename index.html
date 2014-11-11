@@ -44,7 +44,7 @@
     // will edit based on user attributes
      <ul>
         {{#each picSet}}
-            <li><a href="#/image_sets/{{this.id}}"> {{ this.voting_criteria }}</a><br></li>
+            <li><a id="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a><br></li>
         {{/each}}
     </ul>
 </script>
@@ -60,7 +60,7 @@
     </ul>
 </script>
 
-<script id="imageSetsTemplate" type="text/x-handlebars-template">
+<script id="imageSetTemplate" type="text/x-handlebars-template">
     <h1>Image Sets</h1>
 
     // will edit based on image_set attributes
