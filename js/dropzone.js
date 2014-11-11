@@ -299,7 +299,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       maxThumbnailFilesize: 10,
       thumbnailWidth: 100,
       thumbnailHeight: 100,
-      maxFiles: null,
+      maxFiles: 3,
       params: {},
       clickable: true,
       ignoreHiddenFiles: true,
