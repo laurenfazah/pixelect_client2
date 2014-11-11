@@ -170,50 +170,21 @@
 <<img src="#" id="ture">
  -->
 
-<!-- start s3 demo -->
-
-
-
-<script src="https://sdk.amazonaws.com/js/aws-sdk-2.0.25.min.js"></script>
-<script type="text/javascript">
-  // See the Configuring section to configure credentials in the SDK
-  // AWS.config.update({accessKeyId: ''});
-
-  // Configure your region
-  AWS.config.region = 'us-east-1';
-</script>
-
-<!-- upload: -->
-
-<!-- drag and drop form -->
-<form action="/file-upload"
+ <form action="/file-upload"
       class="dropzone"
       id="my-awesome-dropzone"></form>
-<!-- <input type="file" id="file-chooser" /> -->
-<button id="upload-button">Upload to Pixelect</button>
-<div id="results"></div>
 
-<script type="text/javascript">
-  var bucket = new AWS.S3({params: {Bucket: 'pixelect'}});
+<!-- start s3 demo -->
 
-  var fileChooser = document.getElementById('file-chooser');
-  var button = document.getElementById('upload-button');
-  var results = document.getElementById('results');
-  button.addEventListener('click', function() {
-    var file = fileChooser.files[0];
-    if (file) {
-      results.innerHTML = '';
-
-      var params = {Key: file.name, ContentType: file.type, Body: file};
-      bucket.putObject(params, function (err, data) {
-        results.innerHTML = err ? 'ERROR!' : 'UPLOADED.';
-      });
-    } else {
-      results.innerHTML = 'Nothing to upload.';
-    }
-  }, false);
-</script>
-
+  <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+    <input id='acl' type="hidden" name="acl" value="public-read" />
+    <input id='key' type="hidden" name="key" value="" />
+    <input id='accessKey' type="hidden" name="AWSAccessKeyId" value="" />
+    <input id='uploadPolicy' type="hidden" name="Policy" value="POLICY" />
+    <input id='uploadSignature' type="hidden" name="Signature" value="SIGNATURE" />
+    File: <input type="file" name="file" accept="image/*"/> <br />
+    <input id='submitButton'type="submit" name="submit" value="Upload to Amazon S3" />
+  </form>
 <!-- end s3 demo -->
 
 
@@ -278,6 +249,7 @@
 <script src="bower_components/backbone/backbone.js"></script>
 <script src="bower_components/handlebars/handlebars.js"></script>
 <script src="js/app.js" type="text/javascript"></script>
+<script src="js/s3.js" type="text/javascript"></script>
 
 </body>
 </html>
