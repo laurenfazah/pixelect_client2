@@ -11,7 +11,11 @@ var Router = Backbone.Router.extend({
     },
 
     home: function() {
-      $('.recent_imageset').empty();
+        $('#myCarousel').show();
+        // $('#wholeCarousel').append('#myCarousel');
+        $('.recent_imageset').empty();
+
+
         $.ajax({
             url: 'https://pixelect-rails-api.herokuapp.com', // changed from /images
             type: 'GET'
@@ -62,6 +66,7 @@ var Router = Backbone.Router.extend({
 // this will bring you to a specific image set page, although you need to click twice.
 // another perticularity is that if you just go to http://.....#/image_sets/1 you wont get the page, you have to click on the front page link.
      image_sets: function(e) {
+        $('#myCarousel').hide();
         // e.preventDefault();
         $('.see-image-set').on('click', function() {
             $('#content').empty();
@@ -113,7 +118,8 @@ var Router = Backbone.Router.extend({
 
 
     images: function() {
-      $('#content').empty();
+        $('#myCarousel').hide();
+        $('#content').empty();
 
         $.ajax({
             url: 'https://pixelect-rails-api.herokuapp.com/images',
@@ -129,7 +135,8 @@ var Router = Backbone.Router.extend({
 
 
     comments: function() {
-      $('#content').empty();
+        $('#myCarousel').hide();
+        $('#content').empty();
 
         $.ajax({
             url: 'https://pixelect-rails-api.herokuapp.com/comments',
@@ -144,7 +151,8 @@ var Router = Backbone.Router.extend({
     },
 
     likes: function() {
-      $('#content').empty();
+        $('#myCarousel').hide();
+        $('#content').empty();
 
         $.ajax({
             url: 'https://pixelect-rails-api.herokuapp.com/likes',
