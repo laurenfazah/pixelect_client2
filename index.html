@@ -241,7 +241,7 @@
     // will edit based on final image attributes
      <ul>
         {{#each image}}
-            <li>{{ this.file_name }} {{ this.likes }}<br></li>
+            <li><img src={{ this.image_url }}> {{ this.likes }}<br></li>
         {{/each}}
     </ul>
 </script>
