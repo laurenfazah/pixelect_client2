@@ -10,7 +10,9 @@
 </head>
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<!-- start navigation -->
+
+<div class="navbar navbar-inverse navbar-fixed-top" id="custom_header" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -19,25 +21,189 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Pixelect</a>
+            <a class="navbar-brand" id="navbar_brand_custom" href="#">Pixelect</a>
         </div>
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="custom_header_font">
             <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#/users">Users</a></li>
-                <li><a href="#/image_sets">Image Sets</a></li>
-                <li><a href="#/images">Images</a></li>
-                <li><a href="#/comments">Comments</a></li>
-                <li><a href="#/likes">Likes</a></li>
+                <li><a id="nav_custom1" href="#">Home</a></li>
+                <li><a id="nav_custom2" href="#/users">Users</a></li>
+                <li><a id="nav_custom3" href="#/image_sets">Image Sets</a></li>
+                <li><a id="nav_custom4" href="#/images">Images</a></li>
+                <li><a id="nav_custom5" href="#/comments">Comments</a></li>
+                <li><a id="nav_custom6" href="#/likes">Likes</a></li>
             </ul>
         </div>
     </div>
 </div>
 
+<!-- end navigation -->
+
+<!-- start carousel -->
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item active">
+      <div class="container" id="PopularSets">
+        <div >
+          <h1>Welcome to Pixelect!</h1>
+          <h3>
+          Popular Image Sets
+          </h3>    
+          <div class = "container">
+            <p>Example question?</p>
+            <div class = "row">
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+            </div>
+            <div class = "row">
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+            </div>
+            <div class = "row">
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+            </div>
+          </div>
+          <p>
+          <a class="btn btn-lg btn-primary caro cust" href="#" role="button">See More!</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="container" id="RecentSets">
+        <div >
+          <h1>Welcome to Pixelect!</h1>
+          <h3>
+          Recent Image Sets
+          </h3>    
+          <div class = "container">
+            <p>Example question?</p>
+            <div class = "row">
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+            </div>
+            <div class = "row">
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+            </div>
+            <div class = "row">
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+            </div>
+          </div>
+          <p>
+          <a class="btn btn-lg btn-primary caro cust" href="#" role="button">See More!</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56162004-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- end carousel -->
+
+
+<!-- start JS container -->
 
 <div class="container">
 	<div id="content"></div>
 </div>
+
+<!-- end JS container -->
+
+<!-- <input type="file" id="pic">
+<<img src="#" id="ture">
+ -->
+
+<!-- start s3 demo -->
+
+
+
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.0.25.min.js"></script>
+<script type="text/javascript">
+  // See the Configuring section to configure credentials in the SDK
+  // AWS.config.update({accessKeyId: ''});
+
+  // Configure your region
+  AWS.config.region = 'us-east-1';
+</script>
+
+<!-- upload: -->
+
+<input type="file" id="file-chooser" /> 
+<button id="upload-button">Upload to S3</button>
+<div id="results"></div>
+
+<script type="text/javascript">
+  var bucket = new AWS.S3({params: {Bucket: 'pixelect'}});
+
+  var fileChooser = document.getElementById('file-chooser');
+  var button = document.getElementById('upload-button');
+  var results = document.getElementById('results');
+  button.addEventListener('click', function() {
+    var file = fileChooser.files[0];
+    if (file) {
+      results.innerHTML = '';
+
+      var params = {Key: file.name, ContentType: file.type, Body: file};
+      bucket.putObject(params, function (err, data) {
+        results.innerHTML = err ? 'ERROR!' : 'UPLOADED.';
+      });
+    } else {
+      results.innerHTML = 'Nothing to upload.';
+    }
+  }, false);
+</script>
+
+<!-- end s3 demo -->
+
+<script id="homeTemplate" type="text/x-handlebars-template">
+    <h1></h1>
+
+</script>
+
 
 
 <script id="usersTemplate" type="text/x-handlebars-template">
