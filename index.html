@@ -7,9 +7,12 @@
 <title>Pixelect</title>
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/dropcss/basic.css">
+<link rel="stylesheet" href="css/dropcss/dropzone.css">
 <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css'>
+<script src="js/dropzone.js"></script>
 </head>
 <body>
 
@@ -182,8 +185,12 @@
 
 <!-- upload: -->
 
-<input type="file" id="file-chooser" />
-<button id="upload-button">Upload to S3</button>
+<!-- drag and drop form -->
+<form action="/file-upload"
+      class="dropzone"
+      id="my-awesome-dropzone"></form>
+<!-- <input type="file" id="file-chooser" /> -->
+<button id="upload-button">Upload to Pixelect</button>
 <div id="results"></div>
 
 <script type="text/javascript">
