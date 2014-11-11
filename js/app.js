@@ -8,11 +8,11 @@ var Router = Backbone.Router.extend({
         'likes': 'likes',
         'postImages': 'postImages',
         'image_sets/:id' : 'image_sets'
+        'image_sets/:id' : 'set_page'
     },
 
     home: function() {
         $('#myCarousel').show();
-        // $('#wholeCarousel').append('#myCarousel');
         $('.recent_imageset').empty();
 
 
@@ -20,8 +20,6 @@ var Router = Backbone.Router.extend({
             url: 'https://pixelect-rails-api.herokuapp.com', // changed from /images
             type: 'GET'
         }).done(function(response) {
-            // var parsedResponse = jQuery.parseJSON(response)
-            // var object = response
             console.log(response);
             var template = Handlebars.compile($('#homePicSetsTemplate').html());
               $('.recent_imageset').html(template({
@@ -48,10 +46,10 @@ var Router = Backbone.Router.extend({
     },
 
     // image_sets: function() {
-    //   $('#content').empty();
-
+    //     $('#content').empty();
+    //     $('#myCarousel').hide();
     //     $.ajax({
-    //         url: 'https://pixelect-rails-api.herokuapp.com/image_sets', //changed form /image_sets
+    //         url: 'https://pixelect-rails-api.herokuapp.com/image_sets/'+ ':id', //changed form /image_sets
     //         type: 'GET'
     //     }).done(function(response) {
     //         console.log(response);
@@ -83,6 +81,23 @@ var Router = Backbone.Router.extend({
                 });
             });
 
+    },
+
+
+
+
+    set_page: function(id) {
+        $('#content').empty();
+        $('#myCarousel').hide();
+        $.ajax({
+            url: 'https://pixelect-rails-api.herokuapp.com/image_sets/:id',
+            type: 'GET'
+        }).done(function(response) {
+            var template = Handlebars.compile($('#imageSetTemplate').html());
+            $('#content').html(template({
+                image_set: response
+            }));
+        });
     },
 
     // click_events: function() {
