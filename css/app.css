@@ -111,3 +111,8 @@ html, body {
 #content {
 	padding-top: 100px;
 }
+
+.imgset {
+	height: 200px;
+	width: 300px;
+}
