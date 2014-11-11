@@ -25,12 +25,14 @@
         </div>
         <div class="collapse navbar-collapse" id="custom_header_font">
             <ul class="nav navbar-nav">
+
                 <li><a id="nav_custom1" href="#">Home</a></li>
                 <li><a id="nav_custom2" href="#/users">Users</a></li>
                 <li><a id="nav_custom3" href="#/image_sets">Image Sets</a></li>
                 <li><a id="nav_custom4" href="#/images">Images</a></li>
                 <li><a id="nav_custom5" href="#/comments">Comments</a></li>
                 <li><a id="nav_custom6" href="#/likes">Likes</a></li>
+
             </ul>
         </div>
     </div>
@@ -52,7 +54,7 @@
           <h1>Welcome to Pixelect!</h1>
           <h3>
           Popular Image Sets
-          </h3>    
+          </h3>
           <div class = "container">
             <p>Example question?</p>
             <div class = "row">
@@ -92,9 +94,9 @@
           <h1>Welcome to Pixelect!</h1>
           <h3>
           Recent Image Sets
-          </h3>    
+          </h3>
           <div class = "container">
-            <p>Example question?</p>
+            <p class="recent_imageset"></p>
             <div class = "row">
               <div class = "col-xs-4">
               </div>
@@ -150,7 +152,15 @@
 <div class="container">
 	<div id="content"></div>
 </div>
-
+<script id="homePicSetsTemplate" type="text/x-handlebars-template">
+    <h1>Picture Sets</h1>
+    // will edit based on user attributes
+     <ul>
+        {{#each picSet}}
+            <li><a class="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a><br></li>
+        {{/each}}
+    </ul>
+</script>
 <!-- end JS container -->
 
 <!-- <input type="file" id="pic">
@@ -172,7 +182,7 @@
 
 <!-- upload: -->
 
-<input type="file" id="file-chooser" /> 
+<input type="file" id="file-chooser" />
 <button id="upload-button">Upload to S3</button>
 <div id="results"></div>
 
@@ -208,7 +218,7 @@
 
 <script id="usersTemplate" type="text/x-handlebars-template">
     <h1>Users</h1>
-    
+
     // will edit based on user attributes
      <ul>
         {{#each user}}
@@ -217,15 +227,12 @@
     </ul>
 </script>
 
-<script id="imageSetsTemplate" type="text/x-handlebars-template">
-    <h1>Image Sets</h1>
+<script id="imageSetTemplate" type="text/x-handlebars-template">
+
+    <h1>{{image_set.voting_criteria}}</h1>
 
     // will edit based on image_set attributes
-     <ul>
-        {{#each image_set}}
-            <li><a href {{ this.url }}>{{ this.title }}</a><br></li>
-        {{/each}}
-    </ul>
+
 </script>
 
 <script id="imagesTemplate" type="text/x-handlebars-template">
