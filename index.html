@@ -10,6 +10,7 @@
 <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css'>
+<script src="js/dropzone.js"></script>
 </head>
 <body>
 
@@ -182,7 +183,11 @@
 
 <!-- upload: -->
 
-<input type="file" id="file-chooser" />
+<!-- drag and drop form -->
+<form action="/file-upload"
+      class="dropzone"
+      id="my-awesome-dropzone"></form>
+<!-- <input type="file" id="file-chooser" /> -->
 <button id="upload-button">Upload to S3</button>
 <div id="results"></div>
 
