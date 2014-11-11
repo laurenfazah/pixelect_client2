@@ -1,8 +1,7 @@
 var Router = Backbone.Router.extend({
     routes: {
         '': 'home',
-        'users': 'users', // users does not exist
-        // 'image_sets': 'image_sets', // this is the same as root of heroku api
+        'users': 'users',
         'images': 'images',
         'comments': 'comments',
         'likes': 'likes',
@@ -11,15 +10,15 @@ var Router = Backbone.Router.extend({
     },
 
     home: function() {
+
       $('.recent_imageset').empty();
       $('#content').empty();
       $('#myCarousel').show();
+
         $.ajax({
             url: 'https://pixelect-rails-api.herokuapp.com', // changed from /images
             type: 'GET'
         }).done(function(response) {
-            // var parsedResponse = jQuery.parseJSON(response)
-            // var object = response
             console.log(response);
             var template = Handlebars.compile($('#homePicSetsTemplate').html());
               $('.recent_imageset').html(template({
@@ -45,47 +44,20 @@ var Router = Backbone.Router.extend({
         });
     },
 
-    // image_sets: function() {
-    //   $('#content').empty();
-
-    //     $.ajax({
-    //         url: 'https://pixelect-rails-api.herokuapp.com/image_sets', //changed form /image_sets
-    //         type: 'GET'
-    //     }).done(function(response) {
-    //         console.log(response);
-    //         var template = Handlebars.compile($('#imageSetsTemplate').html());
-    //           $('#content').html(template({
-    //             image_set: response
-    //         }));
-    //     });
-    // },
-
-// this function is supposed to take you to the specific image set when the link on the home page is clicked.
-// this will bring you to a specific image set page, although you need to click twice.
-// another perticularity is that if you just go to http://.....#/image_sets/1 you wont get the page, you have to click on the front page link.
-     image_sets: function(e) {
-        // e.preventDefault();
-        $('.see-image-set').on('click', function() {
-            $('#content').empty();
-                $.ajax({
-                    url: 'https://pixelect-rails-api.herokuapp.com/image_sets/'+$(this).data("id") , //changed form /image_sets
-                    type: 'GET'
-                }).done(function(response) {
-                    console.log(response);
-                    var template = Handlebars.compile($('#imageSetTemplate').html());
-                      $('#content').html(template({
-                        image_set: response
-                    }));
-                });
-            });
-
+    image_sets: function(id) {
+        $('#content').empty();
+        $('#myCarousel').hide();
+        $.ajax({
+            url: 'https://pixelect-rails-api.herokuapp.com/image_sets/' + id, //changed form /image_sets
+            type: 'GET'
+        }).done(function(response) {
+            var template = Handlebars.compile($('#imageSetTemplate').html());
+              $('#content').html(template({
+                image_set: response
+            }));
+        });
     },
 
-    // click_events: function() {
-    //     $('.see-image-set').on('click', function() {
-    //         image_sets;
-    //     });
-    // ;},
 
     // postImages: function() {
     //     $.ajax({
@@ -118,6 +90,7 @@ var Router = Backbone.Router.extend({
       $('#content').empty();
       $('#myCarousel').hide();
 
+
         $.ajax({
             url: 'https://pixelect-rails-api.herokuapp.com/images',
             type: 'GET'
@@ -132,7 +105,8 @@ var Router = Backbone.Router.extend({
 
 
     comments: function() {
-      $('#content').empty();
+        $('#myCarousel').hide();
+        $('#content').empty();
 
         $.ajax({
             url: 'https://pixelect-rails-api.herokuapp.com/comments',
@@ -147,7 +121,8 @@ var Router = Backbone.Router.extend({
     },
 
     likes: function() {
-      $('#content').empty();
+        $('#myCarousel').hide();
+        $('#content').empty();
 
         $.ajax({
             url: 'https://pixelect-rails-api.herokuapp.com/likes',
