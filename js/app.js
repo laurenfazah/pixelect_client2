@@ -10,10 +10,10 @@ var Router = Backbone.Router.extend({
     },
 
     home: function() {
-        $('#myCarousel').show();
-        $('.recent_imageset').empty();
 
-
+      $('.recent_imageset').empty();
+      $('#content').empty();
+      $('#myCarousel').show();
         $.ajax({
             url: 'https://pixelect-rails-api.herokuapp.com', // changed from /images
             type: 'GET'
@@ -86,8 +86,10 @@ var Router = Backbone.Router.extend({
 
 
     images: function() {
-        $('#myCarousel').hide();
-        $('#content').empty();
+
+      $('#content').empty();
+      $('#myCarousel').hide();
+
 
         $.ajax({
             url: 'https://pixelect-rails-api.herokuapp.com/images',
@@ -146,8 +148,31 @@ var Router = Backbone.Router.extend({
 // $(function() {
 //     events;
 // })
+  // $('#submitComment').on('click', '#content', function() {
+  //       e.preventDefault();
+  //       console.log(this);
+  //       // var data = {
+  //       //     comment: {
+  //       //         body: $(this).find('input[name="createComment"]').val(),
+  //       //         user_id: 1,
+  //       //         image_set_id: 'id'
+  //       //     }
+  //       // };
 
+  //       $.ajax({
+  //           url: 'https://pixelect-rails-api.herokuapp.com/comments',
+  //           type: 'POST',
+  //           data: data = { comment: {
+  //               body: $(this).find('input[name="createComment"]').val(),
+  //               user_id: 1,
+  //               image_set_id: 'id'}
+  //           }
+  //       }).done(function(response) {
+  //           console.log(response);
+  //       });
+  //   });
 
 var router = new Router();
+
 
 Backbone.history.start();

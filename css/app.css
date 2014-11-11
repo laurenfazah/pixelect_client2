@@ -1,13 +1,11 @@
 * {
-	font-family: 
+	font-family: 'Raleway', sans-serif;
+	list-style-type: none;
 }
   
 html, body {
 	height: 100000px;
-}
-
-#content {
-	padding-top: 50px;
+	background-color: #d7dcdd;
 }
 
 /* header custom */
@@ -16,13 +14,15 @@ html, body {
 	background-color: #408f92;
 	border-color: #408f92;
 	color: #fdfdfd;
-	height: 60px;
-	font-size: 110%;
-	vertical-align: center;
+	/*height: 70px;*/
+	/*font-size: 110%;*/
+	vertical-align: bottom;
 }
 
 #navbar_brand_custom {
 	color: #fdfdfd;
+	font-family: 'Lobster Two', cursive;
+	font-size: 38px;
 }
 
 #navbar_list_custom {
@@ -31,33 +31,55 @@ html, body {
 
 #nav_custom1 {
 	color: #fdfdfd;
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 20px;
+	vertical-align: sub;
 }
 
 #nav_custom2 {
-	color: #fdfdfd;
+	color: #fdfdfd;	
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 20px;
+	vertical-align: sub;
 }
 
 #nav_custom3  {
-	color: #fdfdfd;
+	color: #fdfdfd;	
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 20px;
+	vertical-align: sub;
 }
 
 #nav_custom4 {
-	color: #fdfdfd;
+	color: #fdfdfd;	
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 20px;
+	vertical-align: sub;
 }
 
 #nav_custom5 {
-	color: #fdfdfd;
+	color: #fdfdfd;	
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 20px;
+	vertical-align: sub;
 }
 
 #nav_custom6 {
-	color: #fdfdfd;
+	color: #fdfdfd;	
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 20px;
+	vertical-align: sub center;
 }
 
 /* carousel custom */
 
+
+
 .carousel {
   height: 100000px;
   margin-bottom: 60px;
+  margin-top: 50px;
+  text-align: center;
 }
 
 .carousel .item {
@@ -85,4 +107,13 @@ html, body {
 #RecentSets {
   height: 100000px;
 	background-color: #eff5f6;
+}
+
+#content {
+	padding-top: 100px;
+}
+
+.imgset {
+	height: 200px;
+	width: 300px;
 }
