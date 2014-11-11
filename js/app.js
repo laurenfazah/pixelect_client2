@@ -12,6 +12,8 @@ var Router = Backbone.Router.extend({
 
     home: function() {
       $('.recent_imageset').empty();
+      $('#content').empty();
+      $('#myCarousel').show();
         $.ajax({
             url: 'https://pixelect-rails-api.herokuapp.com', // changed from /images
             type: 'GET'
@@ -114,6 +116,7 @@ var Router = Backbone.Router.extend({
 
     images: function() {
       $('#content').empty();
+      $('#myCarousel').hide();
 
         $.ajax({
             url: 'https://pixelect-rails-api.herokuapp.com/images',
