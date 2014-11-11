@@ -6,7 +6,8 @@ var Router = Backbone.Router.extend({
         'images': 'images',
         'comments': 'comments',
         'likes': 'likes',
-        'postImages': 'postImages'
+        'postImages': 'postImages',
+        'image_sets/:id' : 'image_sets'
     },
 
     home: function() {
