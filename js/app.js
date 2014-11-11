@@ -26,6 +26,8 @@ var Router = Backbone.Router.extend({
         });
     },
 
+
+//im not sure if we will ever need all the users, just one I think.
     users: function() {
       $('#content').empty();
 
@@ -59,7 +61,7 @@ var Router = Backbone.Router.extend({
 // this function is supposed to take you to the specific image set when the link on the home page is clicked.
 // this will bring you to a specific image set page, although you need to click twice.
 // another perticularity is that if you just go to http://.....#/image_sets/1 you wont get the page, you have to click on the front page link.
-    image_sets: function(e) {
+     image_sets: function(e) {
         // e.preventDefault();
         $('.see-image-set').on('click', function() {
             $('#content').empty();
@@ -76,6 +78,12 @@ var Router = Backbone.Router.extend({
             });
 
     },
+
+    // click_events: function() {
+    //     $('.see-image-set').on('click', function() {
+    //         image_sets;
+    //     });
+    // ;},
 
     // postImages: function() {
     //     $.ajax({
@@ -149,7 +157,20 @@ var Router = Backbone.Router.extend({
             }));
         });
     }
+
+
+
+
+
 });
+// var events = function() {
+//     $('.see-image-set').on('click', image_sets);
+// };
+
+// $(function() {
+//     events;
+// })
+
 
 var router = new Router();
 
