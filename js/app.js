@@ -148,8 +148,31 @@ var Router = Backbone.Router.extend({
 // $(function() {
 //     events;
 // })
+  // $('#submitComment').on('click', '#content', function() {
+  //       e.preventDefault();
+  //       console.log(this);
+  //       // var data = {
+  //       //     comment: {
+  //       //         body: $(this).find('input[name="createComment"]').val(),
+  //       //         user_id: 1,
+  //       //         image_set_id: 'id'
+  //       //     }
+  //       // };
 
+  //       $.ajax({
+  //           url: 'https://pixelect-rails-api.herokuapp.com/comments',
+  //           type: 'POST',
+  //           data: data = { comment: {
+  //               body: $(this).find('input[name="createComment"]').val(),
+  //               user_id: 1,
+  //               image_set_id: 'id'}
+  //           }
+  //       }).done(function(response) {
+  //           console.log(response);
+  //       });
+  //   });
 
 var router = new Router();
+
 
 Backbone.history.start();
