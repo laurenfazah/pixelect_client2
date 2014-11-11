@@ -2,7 +2,7 @@ var Router = Backbone.Router.extend({
     routes: {
         '': 'home',
         'users': 'users', // users does not exist
-        'image_sets': 'image_sets', // this is the same as root of heroku api
+        // 'image_sets': 'image_sets', // this is the same as root of heroku api
         'images': 'images',
         'comments': 'comments',
         'likes': 'likes',
@@ -57,9 +57,10 @@ var Router = Backbone.Router.extend({
     // },
 
 // this function is supposed to take you to the specific image set when the link on the home page is clicked.
+// this will bring you to a specific image set page, although you need to click twice.
     image_sets: function(e) {
         // e.preventDefault();
-        $('#see-image-set').on('click', function() {
+        $('.see-image-set').on('click', function() {
             // console.log($*this).data("id"));
             $('#content').empty();
                 $.ajax({
