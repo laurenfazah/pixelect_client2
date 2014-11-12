@@ -46,14 +46,11 @@
 
 <!-- end navigation -->
 
-
- <form action="/file-upload"
-      class="dropzone"
-      id="my-awesome-dropzone"></form>
-
 <!-- start s3 demo -->
 <div id="s3form">
-  <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+  <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data" class="dropzone" 
+      id="my-awesome-dropzone">
+    <div class="dropzone-previews"></div>
     <input id='acl' type="hidden" name="acl" value="public-read" />
     <input id='key' type="hidden" name="key" value="" />
     <input id='accessKey' type="hidden" name="AWSAccessKeyId" value="" />
