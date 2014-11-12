@@ -23,20 +23,23 @@ ImageApp.getAmazonURL = function() {
   .always(function() {
     console.log("complete");
   });
+
 };
 
 
 ImageApp.addUrlToAPI = function() {
+  // ImageApp.getAmazonURL();
   $.ajax({
     url: 'https://pixelect-rails-api.herokuapp.com/images',
     type: 'POST',
-    data: {image: {file_name: 'placeholder', image_file: 'placeholder', image_url: key, flag: '0', image_set_id: '1'}}
+    data: {image: {file_name: 'placeholder', image_file: 'placeholder', image_url: key, flag: '0', image_set_id: $('#content').find('h1').attr("data-id")}}
   }).done(function(response) {
+    console.log('url sent to api');
     console.table(response);
   });
 }
 
 $(document).ready(function() {
-  ImageApp.getAmazonURL();
-  $('#submitButton').on('click', ImageApp.addUrlToAPI);
+  $('#content').on('click', '#s3input', ImageApp.getAmazonURL);
+  $('#content').on('click', '#submitButton', ImageApp.addUrlToAPI);
 });

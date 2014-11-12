@@ -189,11 +189,30 @@
 
 
 <script id="uploadTemplate" type="text/x-handlebars-template">
-
+  <h1>Create Your Own Image Set</h1>
+  <h3> To Start, Enter the Question You want others to vote upon </h3>
+  <h4>After you submit your question you will be prompted to upload your images</h4><br>
     <input name='voting-criteria'>
     <button type="submit" id="submit-picture-set">Submit Your Question</button>
 
-  <div id="s3form">
+
+
+</script>
+
+<script id="imageSetImageTemplate" type="text/x-handlebars-template">
+    <h1 data-id={{image_set.id}}>{{image_set.voting_criteria}}</h1>
+    <h3>Upload your picture</h3>
+    <div class="container">
+      <div class="row">
+        {{#each image_set.images}} //this might need to be this.images
+        <div class="col-xs-4">
+          <img src={{this.url}}>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <div id="s3form">
   <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
     <input id='acl' type="hidden" name="acl" value="public-read" />
     <input id='key' type="hidden" name="key" value="" />
@@ -203,17 +222,12 @@
     <input type="file"
           name="file"
           accept="image/*"
-          id="s3input"/>
-  <!--   <input type="button"
-       id="secondaryButton"
-          class="btn btn-lg btn-primary caro cust" href="#" role="button"
-       onclick="document.getElementById('s3input').click()"  value="Upload your own set!" /> --><br/>
+          id="s3input"/><br/>
     <input id='submitButton'type="submit" name="submit" value="Submit" class="btn btn-md btn-primary caro cust" href="#" role="button"/>
   </form>
 </div>
 
 </script>
-
 
 
 <script id="usersTemplate" type="text/x-handlebars-template">
