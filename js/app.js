@@ -30,6 +30,7 @@ var Router = Backbone.Router.extend({
 //im not sure if we will ever need all the users, just one I think.
     users: function() {
       $('#content').empty();
+      $('#myCarousel').hide();
 
         $.ajax({
             url: 'https://pixelect-rails-api.herokuapp.com/users',
@@ -44,10 +45,12 @@ var Router = Backbone.Router.extend({
     },
 
     image_sets: function(id) {
-        $('#content').empty();
-        $('#myCarousel').hide();
+
+      $('#content').empty();
+      $('#myCarousel').hide();
+
         $.ajax({
-            url: 'https://pixelect-rails-api.herokuapp.com/image_sets/' + id,
+            url: 'https://pixelect-rails-api.herokuapp.com/image_sets' + id,
             type: 'GET'
         }).done(function(response) {
           console.table(response);
@@ -57,33 +60,6 @@ var Router = Backbone.Router.extend({
             }));
         });
     },
-
-
-    // postImages: function() {
-    //     $.ajax({
-    //         url: 'https://pixelect-rails-api.herokuapp.com/images',
-    //         type: 'POST',
-    //         // data: { image: {
-    //         //             file_name: '',
-    //         //             image_url: '',
-    //         //             flag: 0,
-    //         //             image_set_id: '',
-    //         //             created_at: ,
-    //         //             updated_at:
-    //         //             }
-    //         //         }
-    //         data: { image: {
-    //                     file_name: 'red line',
-    //                     image_url: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/1226491/6JCmWkMbIiZofmI/2px-2col-1w-0gut.png',
-    //                     image_file: '/Users/laurenfazah/Desktop/this.jpg',
-    //                     flag: 0,
-    //                     image_set_id: 1,
-    //                     }
-    //                 }
-    //     }).done(function(response) {
-    //         console.table(response);
-    //     });
-    // },
 
 
     images: function() {
@@ -136,11 +112,6 @@ var Router = Backbone.Router.extend({
             }));
         });
     }
-
-
-
-
-
 });
 // var events = function() {
 //     $('.see-image-set').on('click', image_sets);
@@ -176,7 +147,7 @@ var Router = Backbone.Router.extend({
 
 
 $(document).ready(function () {
-  $('#content').on('click', '#submitComment', comment_post)
+  $('#content').on('click', '#submitComment', comment_post())
 });
 
 var router = new Router();

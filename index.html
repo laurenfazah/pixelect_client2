@@ -33,11 +33,9 @@
             <ul class="nav navbar-nav">
 
                 <li><a id="nav_custom1" href="#">Home</a></li>
-                <li><a id="nav_custom2" href="#/users">Users</a></li>
-                <li><a id="nav_custom3" href="#/image_sets">Image Sets</a></li>
+                <li><a id="nav_custom3" href="#/image_sets">More Image Sets</a></li>
+                <li><a id="nav_custom2" href="#/users">Account</a></li>
                 <li><a id="nav_custom4" href="#/images">Images</a></li>
-                <li><a id="nav_custom5" href="#/comments">Comments</a></li>
-                <li><a id="nav_custom6" href="#/likes">Likes</a></li>
                 <li><input id="search" name="search" placeholder="Search by tag" type="text" data-list=".list">
                   <div class="list">
                     <span></span>
@@ -227,9 +225,9 @@
 
 <script id="homePicSetsTemplate" type="text/x-handlebars-template">
      <ul>
-        {{#each picSet}}
+        {{#each image_set}}
             <li><a class="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a><br></li>
-            <div class="conatiner">
+            <div class="container">
               <div class="row">
                 {{#each this.images}}
                   <div class = "col-xs-4"><img src={{this.image_url}}></div>
@@ -241,12 +239,6 @@
 
 
 </script>
-
-<!-- <input type="file" id="pic">
-<<img src="#" id="ture">
- -->
-
-
 
 
 <!-- start handlbars/backbone integration -->
@@ -269,15 +261,18 @@
     </ul>
 </script>
 
+
 <script id="imageSetTemplate" type="text/x-handlebars-template">
 
     <h1>{{image_set.voting_criteria}}</h1>
 
 
-    <div class="continer">
+    <div class="container">
       <div class="row">
         {{#each image_set.images}}
-        <div class = "col-xs-4"><img src={{this.image_url}}></div>
+          <div class = "col-xs-4">
+            <img src={{this.image_url}}>
+          </div>
         {{/each}}
       </div>
     </div>
@@ -290,9 +285,6 @@
 
     <input name="createComment" id="commentBody">
     <button type="submit" id="submitComment" data-id={{image_set.id}}>Create Comment</button>
-
-
-
 
 </script>
 
