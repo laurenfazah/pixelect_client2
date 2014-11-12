@@ -96,6 +96,10 @@ html, body {
 	border-color: #265557;
 }
 
+.recent_imageset {
+	font-size: 30px;
+}
+
 #PopularSets {
 	background-color: #eff5f6;
   height: 5000px;

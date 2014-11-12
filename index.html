@@ -31,8 +31,6 @@
         </div>
         <div class="collapse navbar-collapse" id="custom_header_font">
             <ul class="nav navbar-nav">
-
-                <li><a id="nav_custom1" href="#">Home</a></li>
                 <li><a id="nav_custom3" href="#/image_sets">More Image Sets</a></li>
                 <li><a id="nav_custom2" href="#/users">Account</a></li>
                 <li><a id="nav_custom4" href="#/images">Images</a></li>
@@ -223,9 +221,11 @@
 </div>
 <!-- end JS container -->
 
+<!-- start handlbars/backbone integration -->
+
 <script id="homePicSetsTemplate" type="text/x-handlebars-template">
      <ul>
-        {{#each image_set}}
+        {{#each picSet}}
             <li><a class="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a><br></li>
             <div class="container">
               <div class="row">
@@ -241,14 +241,10 @@
 </script>
 
 
-<!-- start handlbars/backbone integration -->
-
-
 <script id="homeTemplate" type="text/x-handlebars-template">
     <h1></h1>
 
 </script>
-
 
 
 <script id="usersTemplate" type="text/x-handlebars-template">
@@ -261,7 +257,6 @@
     </ul>
 </script>
 
-
 <script id="imageSetTemplate" type="text/x-handlebars-template">
 
     <h1>{{image_set.voting_criteria}}</h1>
@@ -270,9 +265,7 @@
     <div class="container">
       <div class="row">
         {{#each image_set.images}}
-          <div class = "col-xs-4">
-            <img src={{this.image_url}}>
-          </div>
+        <div class = "col-xs-4"><img src={{this.image_url}}></div>
         {{/each}}
       </div>
     </div>
