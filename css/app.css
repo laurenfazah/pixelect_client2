@@ -110,6 +110,11 @@ html, body {
 	background-color: #eff5f6;
 }
 
+div.col-xs-4 {
+	max-height: 200px;
+	max-width: 300px;
+}
+
 #content {
 	padding-top: 100px;
 }

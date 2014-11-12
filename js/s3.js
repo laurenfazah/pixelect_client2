@@ -39,5 +39,5 @@ ImageApp.addUrlToAPI = function() {
 $(document).ready(function() {
   ImageApp.getAmazonURL();
   console.log('hi');
-  $('#submitButton').on('click', ImageApp.addUrlToAPI);
+  $('#content').on('click', '#s3input', ImageApp.addUrlToAPI);
 });

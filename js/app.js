@@ -4,10 +4,9 @@ var Router = Backbone.Router.extend({
         'users': 'users',
         'images': 'images',
         'upload_image_set' : 'upload_image_set',
-        'comments': 'comments',
-        'likes': 'likes',
         'postImages': 'postImages',
-        'image_sets/:id' : 'image_sets'
+        'image_sets/:id' : 'image_sets',
+        'upload_pics' : 'upload_pics'
     },
 
     home: function() {
@@ -27,6 +26,19 @@ var Router = Backbone.Router.extend({
         });
     },
 
+
+    upload_pics: function() {
+      $('#myCarousel').hide();
+      $('#content').empty();
+
+      var template = Handlebars.compile($("#uploadPicsTemplate").html());
+        $('#content').html(template({
+
+        }));
+
+    },
+
+
     upload_image_set: function() {
       $('#myCarousel').hide();
       $('#content').empty()
@@ -35,22 +47,20 @@ var Router = Backbone.Router.extend({
                 // picSet: response
             }));
 
-
-      // $.ajax({
-      //   url: 'https://pixelect-rails-api.herokuapp.com/image_sets',
-      //   type: 'POST',
-      //   data: {image_set: {
-      //           votingCriteria: $('#content').find('input[name="voting-criteria"]').val(),
-      //           user_id: 1,
-      //           total_likes: 0
-      //       }
-      //   })
-      // }).done(function(response){
-      //   console.log(response);
-      // });
+      $.ajax({
+        url: 'https://pixelect-rails-api.herokuapp.com/image_sets',
+        type: 'POST',
+        data: {image_set: {
+                votingCriteria: $('#content').find('input[name="voting-criteria"]').val(),
+                user_id: 1,
+                total_likes: 0
+            }
+        }
+      }).done(function(response){
+        console.log(response);
+      });
     },
 
-//im not sure if we will ever need all the users, just one I think.
     users: function() {
       $('#content').empty();
 
@@ -131,11 +141,6 @@ var Router = Backbone.Router.extend({
             }));
         });
     }
-
-
-
-
-
 });
 // var events = function() {
 //     $('.see-image-set').on('click', image_sets);
@@ -169,10 +174,28 @@ var Router = Backbone.Router.extend({
         });
     };
 
+    var upload3Pics = function() {
+
+      $.ajax({
+        url: 'https://pixelect-rails-api.herokuapp.com/upload_pics',
+        type: 'POST',
+        data: { image: {id: 1 ,file_name: "kitten.jpg", image_file: " ", image_url:"www.kitten.com",flag: 0, image_set_id: 1}
+
+        }
+      }).done(function(response) {
+        console.log(response);
+        var template = Handlebars.compile($("#uploadPicsTemplate").html());
+        $('#content').html(template({
+
+        }));
+      })
+    }
+
 
 $(document).ready(function () {
-  $('#content').on('click', '#submitComment', comment_post)
-  // $('#content').on('click', '#submit-picture-set', upload_image_set)
+  $('#content').on('click', '#submitComment', comment_post);
+  for (var i = 0; i < 3; i++) 
+    upload3Pics(i);
 });
 
 var router = new Router();
