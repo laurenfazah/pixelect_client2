@@ -173,7 +173,7 @@ var Router = Backbone.Router.extend({
           type: 'POST',
           data: {image_set: {
                 voting_criteria: $('#content').find('input[name="voting-criteria"]').val(),
-                user_id: 1,
+                user_id: '',
                 total_likes: 0}
           }
         }).done(function(response){
@@ -185,10 +185,26 @@ var Router = Backbone.Router.extend({
         });
       };
 
+    // var render_pic_to_upload = function() {
+    //     var id = $('#content').find('h1').attr("data-id")
+    //     $('#content').empty();
+    //     // console.log($('#content').find('h1').attr("data-id"))
+    //     $.ajax({
+    //         url: 'https://pixelect-rails-api.herokuapp.com/image_sets/'+ id,
+    //         type: 'GET'
+    //     }).done(function(response) {
+    //         var template = Handlebars.compile($('#imageSetImageTemplate').html());
+    //         $('#content').html(template({
+    //             image_set: response
+    //         }));
+    //     });
+    // }
+
 
 $(document).ready(function () {
   $('#content').on('click', '#submitComment', comment_post);
   $('#content').on('click', '#submit-picture-set', create_image_set);
+  // $('#content').on('click', '#submitButton', render_pic_to_upload);
 });
 
 var router = new Router();

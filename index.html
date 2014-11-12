@@ -175,7 +175,7 @@
       <div class="row">
         {{#each image_set.images}} //this might need to be this.images
         <div class="col-xs-4">
-          <img src={{this.url}}>
+          <img src={{this.image_url}}>
         </div>
         {{/each}}
       </div>
@@ -195,6 +195,8 @@
     <input id='submitButton'type="submit" name="submit" value="Submit" class="btn btn-md btn-primary caro cust" href="#" role="button"/>
   </form>
 </div>
+
+<a class="btn btn-lg btn-primary caro cust" href="#/image_sets/{{image_set.id}}" role="button">Complete Your Image Set</a>
 
 </script>
 
