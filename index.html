@@ -30,13 +30,11 @@
         </div>
         <div class="collapse navbar-collapse" id="custom_header_font">
             <ul class="nav navbar-nav">
-
-                <li><a id="nav_custom2" href="#/users">Users</a></li>
-                <li><a id="nav_custom3" href="#/image_sets">Image Sets</a></li>
-                <li><a id="nav_custom4" href="#/images">Images</a></li>
-                <li><a id="nav_custom5" href="#/upload_image_set">Upload a Set</a></li>
-
-
+                <!-- <li><a id="nav_custom2" href="#/users">Account</a></li> -->
+                <!-- <li><a id="nav_custom3" href="#/image_sets">Image Sets</a></li> -->
+                <!-- <li><a id="nav_custom4" href="#/images">Images</a></li> -->
+                <li><a id="nav_custom5" href="#/about">About Pixelect</a></li>
+                <li><a id="nav_custom6" href="#/upload_image_set">Upload a Set</a></li>
             </ul>
         </div>
     </div>
@@ -44,39 +42,29 @@
 
 <!-- end navigation -->
 
-
-
 <!-- start carousel -->
-<script id="homePicTemplate" type="text/x-handlebars-template">
-    <h1></h1>
-</script>
 
-
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide">
   <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
   </ol>
   <div class="carousel-inner">
     <div class="item active">
       <div class="container" id="PopularSets">
         <div>
-          <h1>Welcome to Pixelect!</h1>
-          <h3>Popular Image Sets</h3>
+          <h1>Popular Image Sets</h1>
+          <p>(click left or right for recent sets)</p><br>
           <div id="pop_script"></div>
-          <p><a class="btn btn-lg btn-primary caro cust" href="#" role="button">See More!</a></p>
+          <!-- <p><a class="btn btn-lg btn-primary caro cust" href="#" role="button">See More!</a></p> -->
         </div>
       </div>
     </div>
     <div class="item">
       <div class="container" id="RecentSets">
-        <div >
-          <h1>Welcome to Pixelect!</h1>
-          <h3>Recent Image Sets</h3>
+        <div>
+          <h1>Recent Image Sets</h1>
+          <p>(click left or right for popular sets)</p><br>
           <div id="rec_script"></div>
-          <p>
-          <a class="btn btn-lg btn-primary caro cust" href="#" role="button">See More!</a>
-          </p>
+<!--           <p><a class="btn btn-lg btn-primary caro cust" href="#" role="button">See More!</a></p> -->
         </div>
       </div>
     </div>
@@ -85,119 +73,82 @@
   <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 </div>
 
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-56162004-1', 'auto');
-  ga('send', 'pageview');
-</script>
 <!-- end carousel -->
-
 
 <!-- start JS container -->
 
 <div class="container">
   <div id="content"></div>
 </div>
+
 <!-- end JS container -->
 
+<!-- start handlebars/backbone integration -->
 
-<!-- start handlbars/backbone integration -->
 <script id="homePopSetsTemplate" type="text/x-handlebars-template">
-       <ul>{{#each pop_image_set}}
-          <li><a class="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a></li>
-          <div class="container">
-            <div class="row">
-              {{#each this.images}}
-                <div class = "col-xs-4"><img src={{this.image_url}}></div>
-              {{/each}}
-            </div>
-          </div>
+  <ul>{{#each pop_image_set}}
+    <li><a class="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a></li>
+    <div class="container">
+      <div class="row">
+      {{#each this.images}}
+        <div class = "col-xs-4"><img src={{this.image_url}}></div>
       {{/each}}
-    </ul>
-  </script>
-
-
-<script id="homeRecSetsTemplate" type="text/x-handlebars-template">
-       <ul>{{#each rec_image_set}}
-          <li><a class="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a></li>
-          <div class="container">
-            <div class="row">
-              {{#each this.images}}
-                <div class = "col-xs-4"><img src={{this.image_url}}></div>
-              {{/each}}
-            </div>
-          </div>
-      {{/each}}
-    </ul>
-  </script>
-
-
-<script id="uploadPicsTemplate" type="text/x-handlebars-template">
-
-<div id="s3form">
-  <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
-    <input id='acl' type="hidden" name="acl" value="public-read" />
-    <input id='key' type="hidden" name="key" value="" />
-    <input id='accessKey' type="hidden" name="AWSAccessKeyId" value="" />
-    <input id='uploadPolicy' type="hidden" name="Policy" value="POLICY" />
-    <input id='uploadSignature' type="hidden" name="Signature" value="SIGNATURE" />
-    <input type="file"
-          name="file"
-          accept="image/*"
-          id="s3input"/>
-    <br/>
-    <input id='submitButton' type="submit" name="submit" value="Submit" class="btn btn-md btn-primary caro cust" href="#" role="button"/>
-  </form>
-</div>
+      </div>
+    </div>
+  {{/each}}
+  </ul>
 </script>
 
-
+<script id="homeRecSetsTemplate" type="text/x-handlebars-template">
+  <ul>{{#each rec_image_set}}
+    <li><a class="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a></li>
+    <div class="container">
+      <div class="row">
+      {{#each this.images}}
+        <div class = "col-xs-4"><img src={{this.image_url}}></div>
+      {{/each}}
+      </div>
+    </div>
+  {{/each}}
+  </ul>
+</script>
 
 <script id="uploadTemplate" type="text/x-handlebars-template">
   <h1>Create Your Own Image Set</h1>
-  <h3> To Start, Enter the Question You want others to vote upon </h3>
-  <h4>After you submit your question you will be prompted to upload your images</h4><br>
-    <input name='voting-criteria'>
-    <button type="submit" id="submit-picture-set">Submit Your Question</button>
-
-
-
+  <h3>To start, enter the question you want others to vote upon.</h3>
+  <h4>After you submit your question, you will be prompted to upload your 3 images.</h4><br>
+    <input name='voting-criteria' id="image_set_input">
+    <button type="submit" id="submit-picture-set" class="btn btn-md btn-primary caro cust" href="#" role="button">Submit Your Question</button>
 </script>
 
 <script id="imageSetImageTemplate" type="text/x-handlebars-template">
-    <h1 data-id={{image_set.id}}>{{image_set.voting_criteria}}</h1>
-    <h3>Upload your picture</h3>
-    <div class="container">
-      <div class="row">
-        {{#each image_set.images}} //this might need to be this.images
-        <div class="col-xs-4">
-          <img src={{this.url}}>
-        </div>
-        {{/each}}
+  <h1 data-id={{image_set.id}}>{{image_set.voting_criteria}}</h1>
+  <h3>Upload your picture</h3>
+  <div class="container">
+    <div class="row">
+      {{#each image_set.images}} //this might need to be this.images
+      <div class="col-xs-4">
+        <img src={{this.url}}>
       </div>
+      {{/each}}
     </div>
+  </div>
 
-    <div id="s3form">
-  <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
-    <input id='acl' type="hidden" name="acl" value="public-read" />
-    <input id='key' type="hidden" name="key" value="" />
-    <input id='accessKey' type="hidden" name="AWSAccessKeyId" value="" />
-    <input id='uploadPolicy' type="hidden" name="Policy" value="POLICY" />
-    <input id='uploadSignature' type="hidden" name="Signature" value="SIGNATURE" />
-    <input type="file"
-          name="file"
-          accept="image/*"
-          id="s3input"/><br/>
-    <input id='submitButton'type="submit" name="submit" value="Submit" class="btn btn-md btn-primary caro cust" href="#" role="button"/>
-  </form>
-</div>
-
+  <div id="s3form">
+    <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+      <input id='acl' type="hidden" name="acl" value="public-read" />
+      <input id='key' type="hidden" name="key" value="" />
+      <input id='accessKey' type="hidden" name="AWSAccessKeyId" value="" />
+      <input id='uploadPolicy' type="hidden" name="Policy" value="POLICY" />
+      <input id='uploadSignature' type="hidden" name="Signature" value="SIGNATURE" />
+      <input type="file"
+            name="file"
+            accept="image/*"
+            id="s3input"/><br/>
+      <input id='submitButton'type="submit" name="submit" value="Submit" class="btn btn-md btn-primary caro cust" href="#" role="button"/>
+    </form>
+  </div>
 </script>
-
 
 <script id="usersTemplate" type="text/x-handlebars-template">
     <h1>Users</h1>
@@ -210,7 +161,6 @@
 </script>
 
 <script id="imageSetTemplate" type="text/x-handlebars-template">
-
     <h1>{{image_set.voting_criteria}}</h1>
 
     <div class="container">
@@ -229,29 +179,16 @@
 
     <input name="createComment" id="commentBody">
     <button type="submit" id="submitComment" data-id={{image_set.id}}>Create Comment</button>
-
-
-
 </script>
 
-<script id="imagesTemplate" type="text/x-handlebars-template">
-    <h1>Images</h1>
 
-     <ul>
-        {{#each image}}
-            <li><img src={{ this.image_url }}> {{ this.likes }}<br></li>
-        {{/each}}
-    </ul>
-</script>
+<script id="aboutTemplate" type="text/x-handlebars-template">
+    <h1>Welcome to Pixelect!</h1>
 
-<script id="commentsTemplate" type="text/x-handlebars-template">
-    <h1>Comments</h1>
-
-     <ul>
-        {{#each comment}}
-            <li>{{ this.body }}<br></li>
-        {{/each}}
-    </ul>
+    <h4>Pixelect is an online photo-sharing community, created to allow its users to gather opinions about a select set of photos they may upload. <br>
+    Users can upload sets of three images with a leading question meant for the community to answer.<br>
+    For example, you may ask, <strong>Which puppy do you think is the cutest?</strong>, along with uploading three images of adorable puppies.<br>
+    Once you upload your image set, we will give you a unique url that you can use to check back in on how the voting went!
 </script>
 
 
