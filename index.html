@@ -32,12 +32,11 @@
         <div class="collapse navbar-collapse" id="custom_header_font">
             <ul class="nav navbar-nav">
 
-                <li><a id="nav_custom1" href="#">Home</a></li>
                 <li><a id="nav_custom2" href="#/users">Users</a></li>
                 <li><a id="nav_custom3" href="#/image_sets">Image Sets</a></li>
                 <li><a id="nav_custom4" href="#/images">Images</a></li>
-                <li><a id="nav_custom5" href="#/comments">Comments</a></li>
-                <li><a id="nav_custom6" href="#/likes">Likes</a></li>
+                <li><a id="nav_custom5" href="#/upload_image_set">Upload a Set</a></li>
+
 
             </ul>
         </div>
@@ -47,24 +46,7 @@
 <!-- end navigation -->
 
 <!-- start s3 demo -->
-<div id="s3form">
-  <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
-    <input id='acl' type="hidden" name="acl" value="public-read" />
-    <input id='key' type="hidden" name="key" value="" />
-    <input id='accessKey' type="hidden" name="AWSAccessKeyId" value="" />
-    <input id='uploadPolicy' type="hidden" name="Policy" value="POLICY" />
-    <input id='uploadSignature' type="hidden" name="Signature" value="SIGNATURE" />
-    <input type="file"
-          name="file"
-          accept="image/*"
-          id="s3input"/>
-  <!--   <input type="button"
-       id="secondaryButton"
-          class="btn btn-lg btn-primary caro cust" href="#" role="button"
-       onclick="document.getElementById('s3input').click()"  value="Upload your own set!" /> --><br/>
-    <input id='submitButton'type="submit" name="submit" value="Submit" class="btn btn-md btn-primary caro cust" href="#" role="button"/>
-  </form>
-</div>
+
 <!-- end s3 demo -->
 
 <!-- start carousel -->
@@ -210,6 +192,25 @@
 
     <input name='voting-criteria'>
     <button type="submit" id="submit-picture-set">Submit Your Question</button>
+
+  <div id="s3form">
+  <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+    <input id='acl' type="hidden" name="acl" value="public-read" />
+    <input id='key' type="hidden" name="key" value="" />
+    <input id='accessKey' type="hidden" name="AWSAccessKeyId" value="" />
+    <input id='uploadPolicy' type="hidden" name="Policy" value="POLICY" />
+    <input id='uploadSignature' type="hidden" name="Signature" value="SIGNATURE" />
+    <input type="file"
+          name="file"
+          accept="image/*"
+          id="s3input"/>
+  <!--   <input type="button"
+       id="secondaryButton"
+          class="btn btn-lg btn-primary caro cust" href="#" role="button"
+       onclick="document.getElementById('s3input').click()"  value="Upload your own set!" /> --><br/>
+    <input id='submitButton'type="submit" name="submit" value="Submit" class="btn btn-md btn-primary caro cust" href="#" role="button"/>
+  </form>
+</div>
 
 </script>
 
