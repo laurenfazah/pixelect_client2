@@ -15,7 +15,7 @@ var Router = Backbone.Router.extend({
       $('#content').empty();
       $('#myCarousel').show();
         $.ajax({
-            url: 'http://localhost:3000',    //'https://pixelect-rails-api.herokuapp.com',
+            url: 'https://pixelect-rails-api.herokuapp.com',
             type: 'GET'
         }).done(function(response) {
             console.log(response);
@@ -47,7 +47,7 @@ var Router = Backbone.Router.extend({
         $('#content').empty();
         $('#myCarousel').hide();
         $.ajax({
-            url: 'http://localhost:3000/image_sets/' + id,    //'https://pixelect-rails-api.herokuapp.com/image_sets/' + id,
+            url: 'https://pixelect-rails-api.herokuapp.com/image_sets/' + id,
             type: 'GET'
         }).done(function(response) {
           console.table(response);
@@ -157,7 +157,7 @@ var Router = Backbone.Router.extend({
 
         // console.log($(this).attr("data-id"))
         $.ajax({
-            url: 'http://localhost:3000/comments',        //'https://pixelect-rails-api.herokuapp.com/comments',
+            url: 'https://pixelect-rails-api.herokuapp.com/comments',
             type: 'POST',
             data: {comment: {
                 body: $('#content').find('input[name="createComment"]').val(),
