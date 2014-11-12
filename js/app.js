@@ -51,20 +51,7 @@ var Router = Backbone.Router.extend({
           $('#content').html(template({
                 // picSet: response
             }));
-
-      $.ajax({
-        url: 'https://pixelect-rails-api.herokuapp.com/image_sets',
-        type: 'POST',
-        data: {image_set: {
-                votingCriteria: $('#content').find('input[name="voting-criteria"]').val(),
-                user_id: 1,
-                total_likes: 0
-            }
-        }
-      }).done(function(response){
-        console.log(response);
-      });
-    },
+      },
 
     users: function() {
       $('#content').empty();
@@ -179,27 +166,29 @@ var Router = Backbone.Router.extend({
         });
     };
 
-    // var upload3Pics = function() {
-    //   $.ajax({
-    //     url: 'https://pixelect-rails-api.herokuapp.com/upload_pics',
-    //     type: 'POST',
-    //     data: { image: {id: 1 ,file_name: "kitten.jpg", image_file: " ", image_url:"www.kitten.com",flag: 0, image_set_id: 1}
-
-    //     }
-    //   }).done(function(response) {
-    //     console.log(response);
-    //     var template = Handlebars.compile($("#uploadPicsTemplate").html());
-    //     $('#content').html(template({
-
-    //     }));
-    //   })
-    // }
+    var create_image_set = function() {
+      // console.log($('#content').find('input[name="voting-criteria"]').val());
+        $.ajax({
+          url: 'https://pixelect-rails-api.herokuapp.com/image_sets',
+          type: 'POST',
+          data: {image_set: {
+                voting_criteria: $('#content').find('input[name="voting-criteria"]').val(),
+                user_id: 1,
+                total_likes: 0}
+          }
+        }).done(function(response){
+          console.log(response);
+          var template = Handlebars.compile($('#imageSetImageTemplate').html());
+          $('#content').html(template({
+                image_set: response
+            }));
+        });
+      };
 
 
 $(document).ready(function () {
   $('#content').on('click', '#submitComment', comment_post);
-  // for (var i = 0; i < 3; i++) 
-  //   upload3Pics(i);
+  $('#content').on('click', '#submit-picture-set', create_image_set);
 });
 
 var router = new Router();
