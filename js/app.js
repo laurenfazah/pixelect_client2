@@ -4,28 +4,45 @@ var Router = Backbone.Router.extend({
         'users': 'users',
         'images': 'images',
         'upload_image_set' : 'upload_image_set',
-        'comments': 'comments',
-        'likes': 'likes',
         'postImages': 'postImages',
-        'image_sets/:id' : 'image_sets'
+        'image_sets/:id' : 'image_sets',
     },
 
     home: function() {
-
-      $('.recent_imageset').empty();
       $('#content').empty();
       $('#myCarousel').show();
         $.ajax({
-            url: 'https://pixelect-rails-api.herokuapp.com',
+            url: 'https://pixelect-rails-api.herokuapp.com/favorite/get_favorite',
             type: 'GET'
         }).done(function(response) {
-            console.log(response);
-            var template = Handlebars.compile($('#homePicSetsTemplate').html());
-              $('.recent_imageset').html(template({
-                picSet: response
+            console.table(response);
+            var template = Handlebars.compile($('#homePopSetsTemplate').html());
+              $('#pop_script').html(template({
+                pop_image_set: response
+            }));
+        });
+        $.ajax({
+            url: 'https://pixelect-rails-api.herokuapp.com/recent/get_recent',
+            type: 'GET'
+        }).done(function(response) {
+            console.table(response);
+            var template = Handlebars.compile($('#homeRecSetsTemplate').html());
+              $('#rec_script').html(template({
+                rec_image_set: response
             }));
         });
     },
+
+    // upload_pics: function() {
+    //   $('#myCarousel').hide();
+    //   $('#content').empty();
+
+    //   var template = Handlebars.compile($("#uploadPicsTemplate").html());
+    //     $('#content').html(template({
+
+    //     }));
+
+    // },
 
     upload_image_set: function() {
       $('#myCarousel').hide();
@@ -36,10 +53,6 @@ var Router = Backbone.Router.extend({
             }));
       },
 
-
-
-
-//im not sure if we will ever need all the users, just one I think.
     users: function() {
       $('#content').empty();
 
@@ -69,9 +82,6 @@ var Router = Backbone.Router.extend({
             }));
         });
     },
-
-
-
 
     images: function() {
 
@@ -123,11 +133,6 @@ var Router = Backbone.Router.extend({
             }));
         });
     }
-
-
-
-
-
 });
 // var events = function() {
 //     $('.see-image-set').on('click', image_sets);

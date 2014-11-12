@@ -1,6 +1,6 @@
 var ImageApp = ImageApp || {}
 
-var key = "";
+ImageApp.key = "";
 
 ImageApp.getAmazonURL = function() {
   $.ajax({
@@ -14,7 +14,7 @@ ImageApp.getAmazonURL = function() {
     $('#accessKey').val(result.access_key);
     $('#acl').val(result.acl);
     $('#key').val(result.key);
-    key = "https://s3.amazonaws.com/pixelect-ig/" + result.key;
+    ImageApp.key = "https://s3.amazonaws.com/pixelect-ig/" + result.key;
   })
   .fail(function(error) {
     console.log(error);
@@ -32,7 +32,7 @@ ImageApp.addUrlToAPI = function() {
   $.ajax({
     url: 'https://pixelect-rails-api.herokuapp.com/images',
     type: 'POST',
-    data: {image: {file_name: 'placeholder', image_file: 'placeholder', image_url: key, flag: '0', image_set_id: $('#content').find('h1').attr("data-id")}}
+    data: {image: {file_name: 'placeholder', image_file: 'placeholder', image_url: ImageApp.key, flag: '0', image_set_id: $('#content').find('h1').attr("data-id")}}
   }).done(function(response) {
     console.log('url sent to api');
     console.table(response);
