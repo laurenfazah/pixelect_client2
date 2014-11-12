@@ -63,7 +63,7 @@
     <input type="button" 
        id="secondaryButton" 
           class="btn btn-lg btn-primary caro cust" href="#" role="button" 
-       onclick="document.getElementById('s3input').click()"  value="Upload your own set!" /><br/>
+       onclick="document.getElementById('s3input').click()"  value="Upload your own set!"/><br/>
     <input id='submitButton'type="submit" name="submit" value="Submit" class="btn btn-md btn-primary caro cust" href="#" role="button"/>
   </form>
 </div>
@@ -84,10 +84,9 @@
     <div class="item active">
       <div class="container" id="PopularSets">
         <div >
-          <h1>Welcome to Pixelect!</h1>
           <h3>Popular Image Sets</h3>
           <div class = "container">
-            <p>Example question?</p>
+            <h1>Example question?</h1>
             <div class = "row">
               <div class = "col-xs-4">
               </div>
@@ -96,6 +95,7 @@
               <div class = "col-xs-4">
               </div>
             </div>
+            <h1>Example question?</h1>
             <div class = "row">
               <div class = "col-xs-4">
               </div>
@@ -104,6 +104,25 @@
               <div class = "col-xs-4">
               </div>
             </div>
+            <h1>Example question?</h1>
+            <div class = "row">
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+            </div>
+            <h1>Example question?</h1>
+            <div class = "row">
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+            </div>
+            <h1>Example question?</h1>
             <div class = "row">
               <div class = "col-xs-4">
               </div>
@@ -120,10 +139,10 @@
     <div class="item">
       <div class="container" id="RecentSets">
         <div >
-          <h1>Welcome to Pixelect!</h1>
           <h3>Recent Image Sets</h3>
           <div class = "container">
             <p class="recent_imageset"></p>
+            <h1>Which mountain is the most peaceful?</h1>
             <div class = "row">
               <div class = "col-xs-4" class="imgset"><img src="https://ununsplash.imgix.net/uploads/1412238370909393b4a19/79f023f1?q=75&fm=jpg&s=0d39e32b84bfacd752f109035a811830" class="imgset" alt="">
               </div>
@@ -132,6 +151,7 @@
               <div class = "col-xs-4" class="imgset"><img src="https://ununsplash.imgix.net/photo-1415226161018-3ec581fa733d?q=75&fm=jpg&s=e3b2f96ffa81ec79445ba2f90ef1c672" class="imgset" alt="">
               </div>
             </div>
+            <h1>Example question?</h1>
             <div class = "row">
               <div class = "col-xs-4">
               </div>
@@ -140,6 +160,25 @@
               <div class = "col-xs-4">
               </div>
             </div>
+            <h1>Example question?</h1>
+            <div class = "row">
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+            </div>
+            <h1>Example question?</h1>
+            <div class = "row">
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+              <div class = "col-xs-4">
+              </div>
+            </div>
+            <h1>Example question?</h1>
             <div class = "row">
               <div class = "col-xs-4">
               </div>
@@ -180,8 +219,6 @@
 <!-- end JS container -->
 
 <script id="homePicSetsTemplate" type="text/x-handlebars-template">
-    <h1>Picture Sets</h1>
-    // will edit based on user attributes
      <ul>
         {{#each picSet}}
             <li><a class="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a><br></li>
@@ -209,7 +246,6 @@
 <script id="usersTemplate" type="text/x-handlebars-template">
     <h1>Users</h1>
 
-    // will edit based on user attributes
      <ul>
         {{#each user}}
             <li><a href {{ this.email }}>{{ this.username }}</a><br></li>
@@ -224,14 +260,12 @@
     <input name="createComment">
     <button type="submit" id="submitComment">Create Comment</button>
 
-    // will edit based on image_set attributes
 
 </script>
 
 <script id="imagesTemplate" type="text/x-handlebars-template">
     <h1>Images</h1>
 
-    // will edit based on final image attributes
      <ul>
         {{#each image}}
             <li>{{ this.file_name }} {{ this.likes }}<br></li>
@@ -242,7 +276,6 @@
 <script id="commentsTemplate" type="text/x-handlebars-template">
     <h1>Comments</h1>
 
-    // will edit based on final comment attributes
      <ul>
         {{#each comment}}
             <li>{{ this.body }}<br></li>
