@@ -27,28 +27,28 @@ var Router = Backbone.Router.extend({
         });
     },
 
-    // upload_image_set: function() {
-    //   $('#myCarousel').hide();
-    //   $('#content').empty()
-    //   var template = Handlebars.compile($('#uploadTemplate').html());
-    //       $('#content').html(template({
-    //             // picSet: response
-    //         }));
+    upload_image_set: function() {
+      $('#myCarousel').hide();
+      $('#content').empty()
+      var template = Handlebars.compile($('#uploadTemplate').html());
+          $('#content').html(template({
+                // picSet: response
+            }));
 
 
-    //   $.ajax({
-    //     url: 'https://pixelect-rails-api.herokuapp.com/image_sets',
-    //     type: 'POST',
-    //     data: {image_set: {
-    //             votingCriteria: $('#content').find('input[name="voting-criteria"]').val(),
-    //             user_id: 1,
-    //             total_likes: 0
-    //         }
-    //     })
-    //   }).done(function(response){
-    //     console.log(response);
-    //   });
-    // },
+      // $.ajax({
+      //   url: 'https://pixelect-rails-api.herokuapp.com/image_sets',
+      //   type: 'POST',
+      //   data: {image_set: {
+      //           votingCriteria: $('#content').find('input[name="voting-criteria"]').val(),
+      //           user_id: 1,
+      //           total_likes: 0
+      //       }
+      //   })
+      // }).done(function(response){
+      //   console.log(response);
+      // });
+    },
 
 //im not sure if we will ever need all the users, just one I think.
     users: function() {
