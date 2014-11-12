@@ -48,16 +48,24 @@
 
 
 <!-- start s3 demo -->
-
+<div id="s3form">
   <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
     <input id='acl' type="hidden" name="acl" value="public-read" />
     <input id='key' type="hidden" name="key" value="" />
     <input id='accessKey' type="hidden" name="AWSAccessKeyId" value="" />
     <input id='uploadPolicy' type="hidden" name="Policy" value="POLICY" />
     <input id='uploadSignature' type="hidden" name="Signature" value="SIGNATURE" />
-    File: <input type="file" name="file" accept="image/*"/> <br />
-    <input id='submitButton'type="submit" name="submit" value="Upload to Amazon S3" />
+    <input type="file" 
+          name="file" 
+          accept="image/*" 
+          id="s3input"/>
+    <input type="button" 
+       id="secondaryButton" 
+          class="btn btn-lg btn-primary caro cust" href="#" role="button" 
+       onclick="document.getElementById('s3input').click()"  value="Upload your own set!" /><br/>
+    <input id='submitButton'type="submit" name="submit" value="Submit" class="btn btn-md btn-primary caro cust" href="#" role="button"/>
   </form>
+</div>
 <!-- end s3 demo -->
 
 <!-- start carousel -->
