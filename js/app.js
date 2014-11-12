@@ -6,6 +6,7 @@ var Router = Backbone.Router.extend({
         'upload_image_set' : 'upload_image_set',
         'postImages': 'postImages',
         'image_sets/:id' : 'image_sets',
+        'about' : 'about'
     },
 
     home: function() {
@@ -102,37 +103,15 @@ var Router = Backbone.Router.extend({
     },
 
 
-    comments: function() {
+    about: function() {
         $('#myCarousel').hide();
         $('#content').empty();
-
-        $.ajax({
-            url: 'https://pixelect-rails-api.herokuapp.com/comments',
-            type: 'GET'
-        }).done(function(response) {
-            console.log(response);
-            var template = Handlebars.compile($('#commentsTemplate').html());
-              $('#content').html(template({
-                comment: response
-            }));
-        });
+        var template = Handlebars.compile($('#aboutTemplate').html());
+          $('#content').html(template({
+        }));
     },
 
-    likes: function() {
-        $('#myCarousel').hide();
-        $('#content').empty();
 
-        $.ajax({
-            url: 'https://pixelect-rails-api.herokuapp.com/likes',
-            type: 'GET'
-        }).done(function(response) {
-            console.log(response);
-            var template = Handlebars.compile($('#likesTemplate').html());
-              $('#content').html(template({
-                like: response
-            }));
-        });
-    }
 });
 // var events = function() {
 //     $('.see-image-set').on('click', image_sets);
@@ -173,7 +152,7 @@ var Router = Backbone.Router.extend({
           type: 'POST',
           data: {image_set: {
                 voting_criteria: $('#content').find('input[name="voting-criteria"]').val(),
-                user_id: 1,
+                user_id: '',
                 total_likes: 0}
           }
         }).done(function(response){
