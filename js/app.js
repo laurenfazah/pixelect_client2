@@ -6,38 +6,43 @@ var Router = Backbone.Router.extend({
         'upload_image_set' : 'upload_image_set',
         'postImages': 'postImages',
         'image_sets/:id' : 'image_sets',
-        'upload_pics' : 'upload_pics'
     },
 
     home: function() {
-
-      $('.recent_imageset').empty();
       $('#content').empty();
       $('#myCarousel').show();
         $.ajax({
-            url: 'https://pixelect-rails-api.herokuapp.com',
+            url: 'https://pixelect-rails-api.herokuapp.com/favorite/get_favorite',
             type: 'GET'
         }).done(function(response) {
-            console.log(response);
-            var template = Handlebars.compile($('#homePicSetsTemplate').html());
-              $('.recent_imageset').html(template({
-                picSet: response
+            console.table(response);
+            var template = Handlebars.compile($('#homePopSetsTemplate').html());
+              $('#pop_script').html(template({
+                pop_image_set: response
+            }));
+        });
+        $.ajax({
+            url: 'https://pixelect-rails-api.herokuapp.com/recent/get_recent',
+            type: 'GET'
+        }).done(function(response) {
+            console.table(response);
+            var template = Handlebars.compile($('#homeRecSetsTemplate').html());
+              $('#rec_script').html(template({
+                rec_image_set: response
             }));
         });
     },
 
+    // upload_pics: function() {
+    //   $('#myCarousel').hide();
+    //   $('#content').empty();
 
-    upload_pics: function() {
-      $('#myCarousel').hide();
-      $('#content').empty();
+    //   var template = Handlebars.compile($("#uploadPicsTemplate").html());
+    //     $('#content').html(template({
 
-      var template = Handlebars.compile($("#uploadPicsTemplate").html());
-        $('#content').html(template({
+    //     }));
 
-        }));
-
-    },
-
+    // },
 
     upload_image_set: function() {
       $('#myCarousel').hide();
@@ -174,28 +179,27 @@ var Router = Backbone.Router.extend({
         });
     };
 
-    var upload3Pics = function() {
+    // var upload3Pics = function() {
+    //   $.ajax({
+    //     url: 'https://pixelect-rails-api.herokuapp.com/upload_pics',
+    //     type: 'POST',
+    //     data: { image: {id: 1 ,file_name: "kitten.jpg", image_file: " ", image_url:"www.kitten.com",flag: 0, image_set_id: 1}
 
-      $.ajax({
-        url: 'https://pixelect-rails-api.herokuapp.com/upload_pics',
-        type: 'POST',
-        data: { image: {id: 1 ,file_name: "kitten.jpg", image_file: " ", image_url:"www.kitten.com",flag: 0, image_set_id: 1}
+    //     }
+    //   }).done(function(response) {
+    //     console.log(response);
+    //     var template = Handlebars.compile($("#uploadPicsTemplate").html());
+    //     $('#content').html(template({
 
-        }
-      }).done(function(response) {
-        console.log(response);
-        var template = Handlebars.compile($("#uploadPicsTemplate").html());
-        $('#content').html(template({
-
-        }));
-      })
-    }
+    //     }));
+    //   })
+    // }
 
 
 $(document).ready(function () {
   $('#content').on('click', '#submitComment', comment_post);
-  for (var i = 0; i < 3; i++) 
-    upload3Pics(i);
+  // for (var i = 0; i < 3; i++) 
+  //   upload3Pics(i);
 });
 
 var router = new Router();

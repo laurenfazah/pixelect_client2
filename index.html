@@ -60,36 +60,10 @@
   <div class="carousel-inner">
     <div class="item active">
       <div class="container" id="PopularSets">
-        <div >
+        <div>
           <h1>Welcome to Pixelect!</h1>
           <h3>Popular Image Sets</h3>
-          <div class = "container">
-            <p>Example question?</p>
-            <div class = "row">
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-            </div>
-            <div class = "row">
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-            </div>
-            <div class = "row">
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-            </div>
-          </div>
+          <div id="pop_script"></div>
           <p><a class="btn btn-lg btn-primary caro cust" href="#" role="button">See More!</a></p>
         </div>
       </div>
@@ -99,33 +73,7 @@
         <div >
           <h1>Welcome to Pixelect!</h1>
           <h3>Recent Image Sets</h3>
-          <div class = "container">
-            <p class="recent_imageset"></p>
-            <div class = "row">
-              <div class = "col-xs-4" class="imgset"><img src="https://ununsplash.imgix.net/uploads/1412238370909393b4a19/79f023f1?q=75&fm=jpg&s=0d39e32b84bfacd752f109035a811830" class="imgset" alt="">
-              </div>
-              <div class = "col-xs-4" class="imgset"><img src="https://ununsplash.imgix.net/uploads/141223808515744db9995/3361b5e1?q=75&fm=jpg&s=04607c34357b70db74394f2fd8a6db7f" class="imgset" alt="">
-              </div>
-              <div class = "col-xs-4" class="imgset"><img src="https://ununsplash.imgix.net/photo-1415226161018-3ec581fa733d?q=75&fm=jpg&s=e3b2f96ffa81ec79445ba2f90ef1c672" class="imgset" alt="">
-              </div>
-            </div>
-            <div class = "row">
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-            </div>
-            <div class = "row">
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-            </div>
-          </div>
+          <div id="rec_script"></div>
           <p>
           <a class="btn btn-lg btn-primary caro cust" href="#" role="button">See More!</a>
           </p>
@@ -158,25 +106,34 @@
 
 
 <!-- start handlbars/backbone integration -->
-
-
-<script id="homePicSetsTemplate" type="text/x-handlebars-template">
-    <h1>Picture Sets</h1>
-     <ul>
-        {{#each picSet}}
-            <li><a class="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a><br></li>
-            <div class="container">
-              <div class="row">
-                {{#each this.images}}
-                  <div class = "col-xs-4"><img src={{this.image_url}}></div>
-                {{/each}}
-              </div>
+<script id="homePopSetsTemplate" type="text/x-handlebars-template">
+       <ul>{{#each pop_image_set}}
+          <li><a class="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a></li>
+          <div class="container">
+            <div class="row">
+              {{#each this.images}}
+                <div class = "col-xs-4"><img src={{this.image_url}}></div>
+              {{/each}}
             </div>
-        {{/each}}
+          </div>
+      {{/each}}
     </ul>
+  </script>
 
 
-</script>
+<script id="homeRecSetsTemplate" type="text/x-handlebars-template">
+       <ul>{{#each rec_image_set}}
+          <li><a class="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a></li>
+          <div class="container">
+            <div class="row">
+              {{#each this.images}}
+                <div class = "col-xs-4"><img src={{this.image_url}}></div>
+              {{/each}}
+            </div>
+          </div>
+      {{/each}}
+    </ul>
+  </script>
 
 
 <script id="uploadPicsTemplate" type="text/x-handlebars-template">
@@ -238,7 +195,6 @@
 <script id="imageSetTemplate" type="text/x-handlebars-template">
 
     <h1>{{image_set.voting_criteria}}</h1>
-
 
     <div class="container">
       <div class="row">
