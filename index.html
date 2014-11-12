@@ -49,16 +49,20 @@
 <!-- start s3 demo -->
 <div id="s3form">
   <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
-    <div class="dropzone-previews"></div>
     <input id='acl' type="hidden" name="acl" value="public-read" />
     <input id='key' type="hidden" name="key" value="" />
     <input id='accessKey' type="hidden" name="AWSAccessKeyId" value="" />
     <input id='uploadPolicy' type="hidden" name="Policy" value="POLICY" />
     <input id='uploadSignature' type="hidden" name="Signature" value="SIGNATURE" />
-    <input type="file" 
-          name="file" 
-          accept="image/*" 
-          id="s3input"/><br/>
+    <input type="file"
+          name="file"
+          accept="image/*"
+          id="s3input"/>
+  <!--   <input type="button"
+       id="secondaryButton"
+          class="btn btn-lg btn-primary caro cust" href="#" role="button"
+       onclick="document.getElementById('s3input').click()"  value="Upload your own set!" /> --><br/>
+
     <input id='submitButton'type="submit" name="submit" value="Submit" class="btn btn-md btn-primary caro cust" href="#" role="button"/>
   </form>
 </div>
@@ -184,7 +188,7 @@
      <ul>
         {{#each picSet}}
             <li><a class="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a><br></li>
-            <div class="conatiner">
+            <div class="container">
               <div class="row">
                 {{#each this.images}}
                   <div class = "col-xs-4"><img src={{this.image_url}}></div>
@@ -206,8 +210,10 @@
 
 
 
-<script id="homeTemplate" type="text/x-handlebars-template">
-    <h1></h1>
+<script id="uploadTemplate" type="text/x-handlebars-template">
+
+    <input name='voting-criteria'>
+    <button type="submit" id="submit-picture-set">Submit Your Question</button>
 
 </script>
 
@@ -229,7 +235,7 @@
     <h1>{{image_set.voting_criteria}}</h1>
 
 
-    <div class="continer">
+    <div class="container">
       <div class="row">
         {{#each image_set.images}}
         <div class = "col-xs-4"><img src={{this.image_url}}></div>

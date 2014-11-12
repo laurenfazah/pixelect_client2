@@ -3,6 +3,7 @@ var Router = Backbone.Router.extend({
         '': 'home',
         'users': 'users',
         'images': 'images',
+        'upload_image_set' : 'upload_image_set',
         'comments': 'comments',
         'likes': 'likes',
         'postImages': 'postImages',
@@ -26,6 +27,28 @@ var Router = Backbone.Router.extend({
         });
     },
 
+    // upload_image_set: function() {
+    //   $('#myCarousel').hide();
+    //   $('#content').empty()
+    //   var template = Handlebars.compile($('#uploadTemplate').html());
+    //       $('#content').html(template({
+    //             // picSet: response
+    //         }));
+
+
+    //   $.ajax({
+    //     url: 'https://pixelect-rails-api.herokuapp.com/image_sets',
+    //     type: 'POST',
+    //     data: {image_set: {
+    //             votingCriteria: $('#content').find('input[name="voting-criteria"]').val(),
+    //             user_id: 1,
+    //             total_likes: 0
+    //         }
+    //     })
+    //   }).done(function(response){
+    //     console.log(response);
+    //   });
+    // },
 
 //im not sure if we will ever need all the users, just one I think.
     users: function() {
@@ -149,6 +172,7 @@ var Router = Backbone.Router.extend({
 
 $(document).ready(function () {
   $('#content').on('click', '#submitComment', comment_post)
+  // $('#content').on('click', '#submit-picture-set', upload_image_set)
 });
 
 var router = new Router();
