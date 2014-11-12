@@ -122,6 +122,17 @@
 </script>
 
 <script id="imageSetImageTemplate" type="text/x-handlebars-template">
+<<<<<<< HEAD
+    <h1 data-id={{image_set.id}}>{{image_set.voting_criteria}}</h1>
+    <h3>Upload your picture</h3>
+    <div class="container">
+      <div class="row">
+        {{#each image_set.images}} //this might need to be this.images
+        <div class="col-xs-4">
+          <img src={{this.image_url}}>
+        </div>
+        {{/each}}
+=======
   <h1 data-id={{image_set.id}}>{{image_set.voting_criteria}}</h1>
   <h3>Upload your picture</h3>
   <div class="container">
@@ -129,11 +140,31 @@
       {{#each image_set.images}} //this might need to be this.images
       <div class="col-xs-4">
         <img src={{this.url}}>
+>>>>>>> ebe81f1b6ee134cf7ae2036b8e48fc7ba922a8a6
       </div>
       {{/each}}
     </div>
   </div>
 
+<<<<<<< HEAD
+    <div id="s3form">
+  <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+    <input id='acl' type="hidden" name="acl" value="public-read" />
+    <input id='key' type="hidden" name="key" value="" />
+    <input id='accessKey' type="hidden" name="AWSAccessKeyId" value="" />
+    <input id='uploadPolicy' type="hidden" name="Policy" value="POLICY" />
+    <input id='uploadSignature' type="hidden" name="Signature" value="SIGNATURE" />
+    <input type="file"
+          name="file"
+          accept="image/*"
+          id="s3input"/><br/>
+    <input id='submitButton'type="submit" name="submit" value="Submit" class="btn btn-md btn-primary caro cust" href="#" role="button"/>
+  </form>
+</div>
+
+<a class="btn btn-lg btn-primary caro cust" href="#/image_sets/{{image_set.id}}" role="button">Complete Your Image Set</a>
+
+=======
   <div id="s3form">
     <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
       <input id='acl' type="hidden" name="acl" value="public-read" />
@@ -148,6 +179,7 @@
       <input id='submitButton'type="submit" name="submit" value="Submit" class="btn btn-md btn-primary caro cust" href="#" role="button"/>
     </form>
   </div>
+>>>>>>> ebe81f1b6ee134cf7ae2036b8e48fc7ba922a8a6
 </script>
 
 <script id="usersTemplate" type="text/x-handlebars-template">
