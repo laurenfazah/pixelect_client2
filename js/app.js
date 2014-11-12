@@ -15,7 +15,7 @@ var Router = Backbone.Router.extend({
       $('#content').empty();
       $('#myCarousel').show();
         $.ajax({
-            url: 'https://pixelect-rails-api.herokuapp.com', // changed from /images
+            url: 'https://pixelect-rails-api.herokuapp.com',
             type: 'GET'
         }).done(function(response) {
             console.log(response);
@@ -47,9 +47,10 @@ var Router = Backbone.Router.extend({
         $('#content').empty();
         $('#myCarousel').hide();
         $.ajax({
-            url: 'https://pixelect-rails-api.herokuapp.com/image_sets/' + id, //changed form /image_sets
+            url: 'https://pixelect-rails-api.herokuapp.com/image_sets/' + id,
             type: 'GET'
         }).done(function(response) {
+          console.table(response);
             var template = Handlebars.compile($('#imageSetTemplate').html());
               $('#content').html(template({
                 image_set: response
@@ -148,29 +149,35 @@ var Router = Backbone.Router.extend({
 // $(function() {
 //     events;
 // })
-  // $('#submitComment').on('click', '#content', function() {
-  //       e.preventDefault();
-  //       console.log(this);
-  //       // var data = {
-  //       //     comment: {
-  //       //         body: $(this).find('input[name="createComment"]').val(),
-  //       //         user_id: 1,
-  //       //         image_set_id: 'id'
-  //       //     }
-  //       // };
 
-  //       $.ajax({
-  //           url: 'https://pixelect-rails-api.herokuapp.com/comments',
-  //           type: 'POST',
-  //           data: data = { comment: {
-  //               body: $(this).find('input[name="createComment"]').val(),
-  //               user_id: 1,
-  //               image_set_id: 'id'}
-  //           }
-  //       }).done(function(response) {
-  //           console.log(response);
-  //       });
-  //   });
+  // $('#content').on('click', '#submitComment', function() {
+        // e.preventDefault();
+
+    var comment_post = function() {
+
+        // console.log($(this).attr("data-id"))
+        $.ajax({
+            url: 'https://pixelect-rails-api.herokuapp.com/comments',
+            type: 'POST',
+            data: {comment: {
+                body: $('#content').find('input[name="createComment"]').val(),
+                user_id: 1,
+                image_set_id: $(this).attr("data-id")}
+            }
+        }).done(function(response) {
+            console.log(response);
+            var template = Handlebars.compile($('#imageSetTemplate').html());
+              $('<li>').append(template({
+                comment: response
+            }));
+
+        });
+    };
+
+
+$(document).ready(function () {
+  $('#content').on('click', '#submitComment', comment_post)
+});
 
 var router = new Router();
 

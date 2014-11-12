@@ -229,8 +229,17 @@
      <ul>
         {{#each picSet}}
             <li><a class="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a><br></li>
+            <div class="conatiner">
+              <div class="row">
+                {{#each this.images}}
+                  <div class = "col-xs-4"><img src={{this.image_url}}></div>
+                {{/each}}
+              </div>
+            </div>
         {{/each}}
     </ul>
+
+
 </script>
 
 <!-- <input type="file" id="pic">
@@ -264,8 +273,25 @@
 
     <h1>{{image_set.voting_criteria}}</h1>
 
-    <input name="createComment">
-    <button type="submit" id="submitComment">Create Comment</button>
+
+    <div class="continer">
+      <div class="row">
+        {{#each image_set.images}}
+        <div class = "col-xs-4"><img src={{this.image_url}}></div>
+        {{/each}}
+      </div>
+    </div>
+
+    <ul id="bodyOfComments">
+      {{#each image_set.comments}}
+        <li> {{this.body}} </li>
+      {{/each}}
+    </ul>
+
+    <input name="createComment" id="commentBody">
+    <button type="submit" id="submitComment" data-id={{image_set.id}}>Create Comment</button>
+
+
 
 
 </script>
@@ -275,7 +301,7 @@
 
      <ul>
         {{#each image}}
-            <li>{{ this.file_name }} {{ this.likes }}<br></li>
+            <li><img src={{ this.image_url }}> {{ this.likes }}<br></li>
         {{/each}}
     </ul>
 </script>
