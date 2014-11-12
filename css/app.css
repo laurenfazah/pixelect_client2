@@ -2,7 +2,7 @@
 	font-family: 'Raleway', sans-serif;
 	list-style-type: none;
 }
-  
+
 html, body {
 }
 
@@ -35,35 +35,35 @@ html, body {
 }
 
 #nav_custom2 {
-	color: #fdfdfd;	
+	color: #fdfdfd;
 	font-family: 'Hammersmith One', sans-serif;
 	font-size: 20px;
 	vertical-align: sub;
 }
 
 #nav_custom3  {
-	color: #fdfdfd;	
+	color: #fdfdfd;
 	font-family: 'Hammersmith One', sans-serif;
 	font-size: 20px;
 	vertical-align: sub;
 }
 
 #nav_custom4 {
-	color: #fdfdfd;	
+	color: #fdfdfd;
 	font-family: 'Hammersmith One', sans-serif;
 	font-size: 20px;
 	vertical-align: sub;
 }
 
 #nav_custom5 {
-	color: #fdfdfd;	
+	color: #fdfdfd;
 	font-family: 'Hammersmith One', sans-serif;
 	font-size: 20px;
 	vertical-align: sub;
 }
 
 #nav_custom6 {
-	color: #fdfdfd;	
+	color: #fdfdfd;
 	font-family: 'Hammersmith One', sans-serif;
 	font-size: 20px;
 	vertical-align: sub;
@@ -115,9 +115,9 @@ html, body {
 	width: 300px;
 }
 
-#s3input {
+/*#s3input {
 	display: none;
-}
+}*/
 
 #secondaryButton {
 	margin-top: 20px;
