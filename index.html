@@ -31,19 +31,16 @@
         </div>
         <div class="collapse navbar-collapse" id="custom_header_font">
             <ul class="nav navbar-nav">
-                <li><a id="nav_custom3" href="#/image_sets">More Image Sets</a></li>
-                <li><a id="nav_custom2" href="#/users">Account</a></li>
+
+                <li><a id="nav_custom1" href="#">Home</a></li>
+                <li><a id="nav_custom2" href="#/users">Users</a></li>
+                <li><a id="nav_custom3" href="#/image_sets">Image Sets</a></li>
                 <li><a id="nav_custom4" href="#/images">Images</a></li>
-                <li><input id="search" name="search" placeholder="Search by tag" type="text" data-list=".list">
-                  <div class="list">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                </li>
+                <li><a id="nav_custom5" href="#/comments">Comments</a></li>
+                <li><a id="nav_custom6" href="#/likes">Likes</a></li>
+
             </ul>
         </div>
-
     </div>
 </div>
 
@@ -51,8 +48,7 @@
 
 <!-- start s3 demo -->
 <div id="s3form">
-  <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data" class="dropzone" 
-      id="my-awesome-dropzone">
+  <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
     <div class="dropzone-previews"></div>
     <input id='acl' type="hidden" name="acl" value="public-read" />
     <input id='key' type="hidden" name="key" value="" />
@@ -62,11 +58,7 @@
     <input type="file" 
           name="file" 
           accept="image/*" 
-          id="s3input"/>
-    <input type="button" 
-       id="secondaryButton" 
-          class="btn btn-lg btn-primary caro cust" href="#" role="button" 
-       onclick="document.getElementById('s3input').click()"  value="Upload your own set!"/><br/>
+          id="s3input"/><br/>
     <input id='submitButton'type="submit" name="submit" value="Submit" class="btn btn-md btn-primary caro cust" href="#" role="button"/>
   </form>
 </div>
@@ -87,9 +79,10 @@
     <div class="item active">
       <div class="container" id="PopularSets">
         <div >
+          <h1>Welcome to Pixelect!</h1>
           <h3>Popular Image Sets</h3>
           <div class = "container">
-            <h1>Example question?</h1>
+            <p>Example question?</p>
             <div class = "row">
               <div class = "col-xs-4">
               </div>
@@ -98,7 +91,6 @@
               <div class = "col-xs-4">
               </div>
             </div>
-            <h1>Example question?</h1>
             <div class = "row">
               <div class = "col-xs-4">
               </div>
@@ -107,25 +99,6 @@
               <div class = "col-xs-4">
               </div>
             </div>
-            <h1>Example question?</h1>
-            <div class = "row">
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-            </div>
-            <h1>Example question?</h1>
-            <div class = "row">
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-            </div>
-            <h1>Example question?</h1>
             <div class = "row">
               <div class = "col-xs-4">
               </div>
@@ -142,10 +115,10 @@
     <div class="item">
       <div class="container" id="RecentSets">
         <div >
+          <h1>Welcome to Pixelect!</h1>
           <h3>Recent Image Sets</h3>
           <div class = "container">
             <p class="recent_imageset"></p>
-            <h1>Which mountain is the most peaceful?</h1>
             <div class = "row">
               <div class = "col-xs-4" class="imgset"><img src="https://ununsplash.imgix.net/uploads/1412238370909393b4a19/79f023f1?q=75&fm=jpg&s=0d39e32b84bfacd752f109035a811830" class="imgset" alt="">
               </div>
@@ -154,7 +127,6 @@
               <div class = "col-xs-4" class="imgset"><img src="https://ununsplash.imgix.net/photo-1415226161018-3ec581fa733d?q=75&fm=jpg&s=e3b2f96ffa81ec79445ba2f90ef1c672" class="imgset" alt="">
               </div>
             </div>
-            <h1>Example question?</h1>
             <div class = "row">
               <div class = "col-xs-4">
               </div>
@@ -163,25 +135,6 @@
               <div class = "col-xs-4">
               </div>
             </div>
-            <h1>Example question?</h1>
-            <div class = "row">
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-            </div>
-            <h1>Example question?</h1>
-            <div class = "row">
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-              <div class = "col-xs-4">
-              </div>
-            </div>
-            <h1>Example question?</h1>
             <div class = "row">
               <div class = "col-xs-4">
               </div>
@@ -217,17 +170,21 @@
 <!-- start JS container -->
 
 <div class="container">
-	<div id="content"></div>
+  <div id="content"></div>
 </div>
 <!-- end JS container -->
 
+
 <!-- start handlbars/backbone integration -->
 
+
 <script id="homePicSetsTemplate" type="text/x-handlebars-template">
+    <h1>Picture Sets</h1>
+    // will edit based on user attributes
      <ul>
         {{#each picSet}}
             <li><a class="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a><br></li>
-            <div class="container">
+            <div class="conatiner">
               <div class="row">
                 {{#each this.images}}
                   <div class = "col-xs-4"><img src={{this.image_url}}></div>
@@ -240,6 +197,14 @@
 
 </script>
 
+<!-- <input type="file" id="pic">
+<<img src="#" id="ture">
+ -->
+
+
+
+
+
 
 <script id="homeTemplate" type="text/x-handlebars-template">
     <h1></h1>
@@ -247,9 +212,11 @@
 </script>
 
 
+
 <script id="usersTemplate" type="text/x-handlebars-template">
     <h1>Users</h1>
 
+    // will edit based on user attributes
      <ul>
         {{#each user}}
             <li><a href {{ this.email }}>{{ this.username }}</a><br></li>
@@ -262,7 +229,7 @@
     <h1>{{image_set.voting_criteria}}</h1>
 
 
-    <div class="container">
+    <div class="continer">
       <div class="row">
         {{#each image_set.images}}
         <div class = "col-xs-4"><img src={{this.image_url}}></div>
@@ -279,11 +246,16 @@
     <input name="createComment" id="commentBody">
     <button type="submit" id="submitComment" data-id={{image_set.id}}>Create Comment</button>
 
+
+
+    // will edit based on image_set attributes
+
 </script>
 
 <script id="imagesTemplate" type="text/x-handlebars-template">
     <h1>Images</h1>
 
+    // will edit based on final image attributes
      <ul>
         {{#each image}}
             <li><img src={{ this.image_url }}> {{ this.likes }}<br></li>
@@ -294,6 +266,7 @@
 <script id="commentsTemplate" type="text/x-handlebars-template">
     <h1>Comments</h1>
 
+    // will edit based on final comment attributes
      <ul>
         {{#each comment}}
             <li>{{ this.body }}<br></li>
@@ -310,7 +283,5 @@
 <script src="js/app.js" type="text/javascript"></script>
 <script src="js/s3.js" type="text/javascript"></script>
 <script src="js/dropzone.js"></script>
-<script type="text/javascript" src="js/jquery.hideseek.min.js"></script>
-<script type="text/javascript" src="js/searchinitializers.js"></script>
 </body>
 </html>

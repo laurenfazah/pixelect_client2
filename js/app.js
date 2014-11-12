@@ -30,7 +30,6 @@ var Router = Backbone.Router.extend({
 //im not sure if we will ever need all the users, just one I think.
     users: function() {
       $('#content').empty();
-      $('#myCarousel').hide();
 
         $.ajax({
             url: 'https://pixelect-rails-api.herokuapp.com/users',
@@ -45,12 +44,10 @@ var Router = Backbone.Router.extend({
     },
 
     image_sets: function(id) {
-
-      $('#content').empty();
-      $('#myCarousel').hide();
-
+        $('#content').empty();
+        $('#myCarousel').hide();
         $.ajax({
-            url: 'https://pixelect-rails-api.herokuapp.com/image_sets' + id,
+            url: 'https://pixelect-rails-api.herokuapp.com/image_sets/' + id,
             type: 'GET'
         }).done(function(response) {
           console.table(response);
@@ -65,6 +62,7 @@ var Router = Backbone.Router.extend({
 
       $('#content').empty();
       $('#myCarousel').hide();
+
 
         $.ajax({
             url: 'https://pixelect-rails-api.herokuapp.com/images',
@@ -110,6 +108,11 @@ var Router = Backbone.Router.extend({
             }));
         });
     }
+
+
+
+
+
 });
 // var events = function() {
 //     $('.see-image-set').on('click', image_sets);
@@ -145,7 +148,7 @@ var Router = Backbone.Router.extend({
 
 
 $(document).ready(function () {
-  $('#content').on('click', '#submitComment', comment_post())
+  $('#content').on('click', '#submitComment', comment_post)
 });
 
 var router = new Router();
