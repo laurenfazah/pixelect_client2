@@ -34,21 +34,10 @@ var Router = Backbone.Router.extend({
           $('#content').html(template({
                 // picSet: response
             }));
+      },
 
 
-      // $.ajax({
-      //   url: 'https://pixelect-rails-api.herokuapp.com/image_sets',
-      //   type: 'POST',
-      //   data: {image_set: {
-      //           votingCriteria: $('#content').find('input[name="voting-criteria"]').val(),
-      //           user_id: 1,
-      //           total_likes: 0
-      //       }
-      //   })
-      // }).done(function(response){
-      //   console.log(response);
-      // });
-    },
+
 
 //im not sure if we will ever need all the users, just one I think.
     users: function() {
@@ -82,31 +71,6 @@ var Router = Backbone.Router.extend({
     },
 
 
-    // postImages: function() {
-    //     $.ajax({
-    //         url: 'https://pixelect-rails-api.herokuapp.com/images',
-    //         type: 'POST',
-    //         // data: { image: {
-    //         //             file_name: '',
-    //         //             image_url: '',
-    //         //             flag: 0,
-    //         //             image_set_id: '',
-    //         //             created_at: ,
-    //         //             updated_at:
-    //         //             }
-    //         //         }
-    //         data: { image: {
-    //                     file_name: 'red line',
-    //                     image_url: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/1226491/6JCmWkMbIiZofmI/2px-2col-1w-0gut.png',
-    //                     image_file: '/Users/laurenfazah/Desktop/this.jpg',
-    //                     flag: 0,
-    //                     image_set_id: 1,
-    //                     }
-    //                 }
-    //     }).done(function(response) {
-    //         console.table(response);
-    //     });
-    // },
 
 
     images: function() {
@@ -197,10 +161,29 @@ var Router = Backbone.Router.extend({
         });
     };
 
+    var create_image_set = function() {
+      // console.log($('#content').find('input[name="voting-criteria"]').val());
+        $.ajax({
+          url: 'https://pixelect-rails-api.herokuapp.com/image_sets',
+          type: 'POST',
+          data: {image_set: {
+                voting_criteria: $('#content').find('input[name="voting-criteria"]').val(),
+                user_id: 1,
+                total_likes: 0}
+          }
+        }).done(function(response){
+          console.log(response);
+          var template = Handlebars.compile($('#imageSetImageTemplate').html());
+          $('#content').html(template({
+                image_set: response
+            }));
+        });
+      };
+
 
 $(document).ready(function () {
-  $('#content').on('click', '#submitComment', comment_post)
-  // $('#content').on('click', '#submit-picture-set', upload_image_set)
+  $('#content').on('click', '#submitComment', comment_post);
+  $('#content').on('click', '#submit-picture-set', create_image_set);
 });
 
 var router = new Router();
