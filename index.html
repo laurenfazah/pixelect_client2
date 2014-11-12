@@ -8,11 +8,11 @@
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="css/app.css">
 <link rel="stylesheet" href="css/dropcss/basic.css">
+<link rel="stylesheet" href="css/dropcss/basic.css">
 <link rel="stylesheet" href="css/dropcss/dropzone.css">
 <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css'>
-<script src="js/dropzone.js"></script>
 </head>
 <body>
 
@@ -46,6 +46,28 @@
 
 <!-- end navigation -->
 
+<!-- start s3 demo -->
+<div id="s3form">
+  <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data" class="dropzone" 
+      id="my-awesome-dropzone">
+    <div class="dropzone-previews"></div>
+    <input id='acl' type="hidden" name="acl" value="public-read" />
+    <input id='key' type="hidden" name="key" value="" />
+    <input id='accessKey' type="hidden" name="AWSAccessKeyId" value="" />
+    <input id='uploadPolicy' type="hidden" name="Policy" value="POLICY" />
+    <input id='uploadSignature' type="hidden" name="Signature" value="SIGNATURE" />
+    <input type="file" 
+          name="file" 
+          accept="image/*" 
+          id="s3input"/>
+    <input type="button" 
+       id="secondaryButton" 
+          class="btn btn-lg btn-primary caro cust" href="#" role="button" 
+       onclick="document.getElementById('s3input').click()"  value="Upload your own set!" /><br/>
+    <input id='submitButton'type="submit" name="submit" value="Submit" class="btn btn-md btn-primary caro cust" href="#" role="button"/>
+  </form>
+</div>
+<!-- end s3 demo -->
 
 <!-- start carousel -->
 <script id="homePicTemplate" type="text/x-handlebars-template">
@@ -155,6 +177,8 @@
 <div class="container">
 	<div id="content"></div>
 </div>
+<!-- end JS container -->
+
 <script id="homePicSetsTemplate" type="text/x-handlebars-template">
     <h1>Picture Sets</h1>
     // will edit based on user attributes
@@ -164,28 +188,12 @@
         {{/each}}
     </ul>
 </script>
-<!-- end JS container -->
 
 <!-- <input type="file" id="pic">
 <<img src="#" id="ture">
  -->
 
- <form action="/file-upload"
-      class="dropzone"
-      id="my-awesome-dropzone"></form>
 
-<!-- start s3 demo -->
-
-  <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
-    <input id='acl' type="hidden" name="acl" value="public-read" />
-    <input id='key' type="hidden" name="key" value="" />
-    <input id='accessKey' type="hidden" name="AWSAccessKeyId" value="" />
-    <input id='uploadPolicy' type="hidden" name="Policy" value="POLICY" />
-    <input id='uploadSignature' type="hidden" name="Signature" value="SIGNATURE" />
-    File: <input type="file" name="file" accept="image/*"/> <br />
-    <input id='submitButton'type="submit" name="submit" value="Upload to Amazon S3" />
-  </form>
-<!-- end s3 demo -->
 
 
 <!-- start handlbars/backbone integration -->
@@ -250,6 +258,6 @@
 <script src="bower_components/handlebars/handlebars.js"></script>
 <script src="js/app.js" type="text/javascript"></script>
 <script src="js/s3.js" type="text/javascript"></script>
-
+<script src="js/dropzone.js"></script>
 </body>
 </html>
