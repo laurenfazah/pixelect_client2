@@ -36,6 +36,11 @@ ImageApp.addUrlToAPI = function() {
   }).done(function(response) {
     console.log('url sent to api');
     console.table(response);
+    console.log(response.image_url);
+    var template = Handlebars.compile($('#imageRenderTemplate').html());
+    $('#uploadedImages').append(template({
+      image_url: response
+    }))
   });
 }
 

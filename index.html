@@ -125,8 +125,11 @@
 <script id="imageSetImageTemplate" type="text/x-handlebars-template">
     <h1 data-id={{image_set.id}}>{{image_set.voting_criteria}}</h1>
     <h3>Upload your picture</h3>
+    <h5> Click chose file to pick your first image to upload </h5>
+    <h6> Once your file is uploaded click submit</h6>
+    <h6> repeat until you have three pictures uploaded</h6>
     <div class="container">
-      <div class="row">
+      <div class="row" id="uploadedImages">
         {{#each image_set.images}} //this might need to be this.images
         <div class="col-xs-4">
           <img src={{this.image_url}}>
@@ -155,7 +158,7 @@
 </script>
 
 <script id="imageRenderTemplate" type="text/x-handlebars-template">
-    <li>{{comment}}</li>
+    <div class="col-xs-4"><img src={{image_url.image_url}}></div>
 </script>
 
 <script id="usersTemplate" type="text/x-handlebars-template">
