@@ -79,6 +79,7 @@
 
 <div class="container">
   <div id="content"></div>
+  <div id="likesTotal"></div>
 </div>
 
 <!-- end JS container -->
@@ -89,9 +90,9 @@
   <ul>{{#each pop_image_set}}
     <li><a class="see-image-set" href="#/image_sets/{{this.id}}" data-id={{this.id}}> {{ this.voting_criteria }}</a></li>
     <div class="container">
-      <div class="row">
+      <div class="row" >
       {{#each this.images}}
-        <div class = "col-xs-4"><img src={{this.image_url}}></div>
+        <div class = "col-xs-4" id="popStyle"><img src={{this.image_url}}></div>
       {{/each}}
       </div>
     </div>
@@ -122,7 +123,6 @@
 </script>
 
 <script id="imageSetImageTemplate" type="text/x-handlebars-template">
-<<<<<<< HEAD
     <h1 data-id={{image_set.id}}>{{image_set.voting_criteria}}</h1>
     <h3>Upload your picture</h3>
     <div class="container">
@@ -132,21 +132,11 @@
           <img src={{this.image_url}}>
         </div>
         {{/each}}
-=======
-  <h1 data-id={{image_set.id}}>{{image_set.voting_criteria}}</h1>
-  <h3>Upload your picture</h3>
-  <div class="container">
-    <div class="row">
-      {{#each image_set.images}} //this might need to be this.images
-      <div class="col-xs-4">
-        <img src={{this.url}}>
->>>>>>> ebe81f1b6ee134cf7ae2036b8e48fc7ba922a8a6
       </div>
       {{/each}}
     </div>
   </div>
 
-<<<<<<< HEAD
     <div id="s3form">
   <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
     <input id='acl' type="hidden" name="acl" value="public-read" />
@@ -164,22 +154,6 @@
 
 <a class="btn btn-lg btn-primary caro cust" href="#/image_sets/{{image_set.id}}" role="button">Complete Your Image Set</a>
 
-=======
-  <div id="s3form">
-    <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
-      <input id='acl' type="hidden" name="acl" value="public-read" />
-      <input id='key' type="hidden" name="key" value="" />
-      <input id='accessKey' type="hidden" name="AWSAccessKeyId" value="" />
-      <input id='uploadPolicy' type="hidden" name="Policy" value="POLICY" />
-      <input id='uploadSignature' type="hidden" name="Signature" value="SIGNATURE" />
-      <input type="file"
-            name="file"
-            accept="image/*"
-            id="s3input"/><br/>
-      <input id='submitButton'type="submit" name="submit" value="Submit" class="btn btn-md btn-primary caro cust" href="#" role="button"/>
-    </form>
-  </div>
->>>>>>> ebe81f1b6ee134cf7ae2036b8e48fc7ba922a8a6
 </script>
 
 <script id="usersTemplate" type="text/x-handlebars-template">
@@ -194,6 +168,19 @@
 
 <script id="imageSetTemplate" type="text/x-handlebars-template">
     <h1>{{image_set.voting_criteria}}</h1>
+   
+   <div class="container" id="likes_div">
+      <h4>Likes per photo:</h4>
+      <div class="row">
+      <ul id="total_likes">
+        {{#each image_set.images}}
+        <div class="col-xs-4">
+          <li>{{this.likes.length}}</li>
+        </div>
+        {{/each}}
+      </ul>
+      </div>
+    </div>
 
     <div class="container">
       <div class="row">
@@ -203,14 +190,17 @@
       </div>
     </div>
 
-    <ul id="bodyOfComments">
-      {{#each image_set.comments}}
-        <li> {{this.body}} </li>
-      {{/each}}
-    </ul>
+     <div id="comments_div">
+      <h4>All comments:</h4>
+      <ul id="bodyOfComments">
+        {{#each image_set.comments}}
+          <li> {{this.body}} </li>
+        {{/each}}
+      </ul>
+    </div>
 
     <input name="createComment" id="commentBody">
-    <button type="submit" id="submitComment" data-id={{image_set.id}}>Create Comment</button>
+    <button type="submit" id="submitComment" class="btn btn-md btn-primary caro cust" data-id={{image_set.id}}>Create Comment</button>
 </script>
 
 

@@ -77,12 +77,26 @@ var Router = Backbone.Router.extend({
             type: 'GET'
         }).done(function(response) {
           console.table(response);
+            var responseJSON = response.to_json;
+            console.log(responseJSON);
             var template = Handlebars.compile($('#imageSetTemplate').html());
               $('#content').html(template({
                 image_set: response
             }));
         });
+        $.ajax({
+            url: 'https://pixelect-rails-api.herokuapp.com/####/' + id,
+            type: 'GET'
+        }).done(function(response) {
+            console.log(responseJSON);
+            var template = Handlebars.compile($('#imageSetTemplate').html());
+              $('#likesTotal').html(template({
+            }));
+        });
     },
+
+
+
 
     images: function() {
 
