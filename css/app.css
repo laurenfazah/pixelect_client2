@@ -95,6 +95,10 @@ html, body {
 	border-color: #265557;
 }
 
+#popStyle {
+	text-align: center;
+}
+
 .recent_imageset {
 	font-size: 30px;
 }
@@ -111,6 +115,14 @@ html, body {
 
 a {
 	font-size: 38px;
+}
+
+#total_likes {
+	text-align: center;
+}
+
+#comments_div {
+	padding-top: 50px;
 }
 
 img {
