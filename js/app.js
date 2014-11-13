@@ -84,19 +84,25 @@ var Router = Backbone.Router.extend({
                 image_set: response
             }));
         });
-        // $('#content').empty();
+
         // $.ajax({
-        //     url: 'https://pixelect-rails-api.herokuapp.com/####/' + id,
+        //     url: 'https://pixelect-rails-api.herokuapp.com/total_likes/' + id,
         //     type: 'GET'
         // }).done(function(response) {
-        //     // console.log(responseJSON);
+        //     var template = Handlebars.compile($('#imageSetTemplate').html());
+        //       $('#likesTotal').html(template({
+        //     }));
+        // });
+        // is this going to do anything?
+        // $.ajax({
+        //     url: 'https://pixelect-rails-api.herokuapp.com/total_likes/' + id,
+        //     type: 'POST'
+        // }).done(function(response) {
         //     var template = Handlebars.compile($('#imageSetTemplate').html());
         //       $('#likesTotal').html(template({
         //     }));
         // });
     },
-
-
 
 
     images: function() {
@@ -138,6 +144,14 @@ var Router = Backbone.Router.extend({
 
   // $('#content').on('click', '#submitComment', function() {
         // e.preventDefault();
+
+  var clickLike = function() {
+    // $('.click').on('click', function() {
+    // id = $(this).attr('data-value');
+    alert("hi");
+    // $('.click').attr('data-value', id+1);
+    // });
+  };
 
     var comment_post = function() {
 
@@ -202,15 +216,6 @@ var Router = Backbone.Router.extend({
 $(document).ready(function () {
   $('#content').on('click', '#submitComment', comment_post);
   $('#content').on('click', '#submit-picture-set', create_image_set);
-  // $('#content').on('click', '#submitButton', render_pic_to_upload);
-  // $('<img>').on('hover', makeHoverHappen)
-  $("<img>").hover(
-    function() {
-    $("<img>").stop().fadeOut();
-  },
-    function() {
-    $("<img>").stop().fadeIn();
-    });
 });
 
 var router = new Router();
