@@ -69,6 +69,11 @@ html, body {
 	vertical-align: sub;
 }
 
+#search {
+	margin-top: 10px;
+	margin-left: 500px;
+}
+
 /* carousel custom */
 
 .carousel {
