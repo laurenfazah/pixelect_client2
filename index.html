@@ -30,11 +30,15 @@
         </div>
         <div class="collapse navbar-collapse" id="custom_header_font">
             <ul class="nav navbar-nav">
-                <!-- <li><a id="nav_custom2" href="#/users">Account</a></li> -->
-                <!-- <li><a id="nav_custom3" href="#/image_sets">Image Sets</a></li> -->
-                <!-- <li><a id="nav_custom4" href="#/images">Images</a></li> -->
                 <li><a id="nav_custom5" href="#/about">About Pixelect</a></li>
                 <li><a id="nav_custom6" href="#/upload_image_set">Upload a Set</a></li>
+                <li><input id="search" name="search" placeholder="Search by tag" type="text" data-list=".list">
+                  <div class="list">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </li>
             </ul>
         </div>
     </div>
@@ -79,7 +83,7 @@
 
 <div class="container">
   <div id="content"></div>
-  <div id="likesTotal"></div>
+  <!-- <div id="likesTotal"></div> -->
 </div>
 
 <!-- end JS container -->
@@ -133,8 +137,6 @@
         </div>
         {{/each}}
       </div>
-      {{/each}}
-    </div>
   </div>
 
 <div id="s3form">
@@ -184,7 +186,9 @@
     <div class="container">
       <div class="row">
         {{#each image_set.images}}
-        <div class = "col-xs-4"><img src={{this.image_url}}></div>
+        <div class = "col-xs-4 click">
+          <img src={{this.image_url}} data-value={{this.id}} class="click">
+        </div>
         {{/each}}
       </div>
     </div>
@@ -193,7 +197,7 @@
       <h4>All comments:</h4>
       <ul id="bodyOfComments">
         {{#each image_set.comments}}
-          <li id ="list-o-comments"> {{this.body}} </li>
+          <li id ="list-o-comments">{{this.body}}</li>
         {{/each}}
       </ul>
     </div>
@@ -222,6 +226,8 @@
 <script src="bower_components/handlebars/handlebars.js"></script>
 <script src="js/app.js" type="text/javascript"></script>
 <script src="js/s3.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.hideseek.min.js"></script>
+<script type="text/javascript" src="js/searchinitializers.js"></script>
 <!-- <script src="js/dropzone.js"></script> -->
 </body>
 </html>
