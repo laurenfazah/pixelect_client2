@@ -150,10 +150,10 @@ var Router = Backbone.Router.extend({
                 image_set_id: $(this).attr("data-id")}
             }
         }).done(function(response) {
-            console.log(response);
-            var template = Handlebars.compile($('#imageSetTemplate').html());
-              $('<li>').append(template({
-                comment: response
+            console.log(response.body);
+            var template = Handlebars.compile($('#commentsTemplate').html());
+              $('#bodyOfComments').append(template({
+                comment: response.body
             }));
 
         });
@@ -193,11 +193,23 @@ var Router = Backbone.Router.extend({
     //     });
     // }
 
+    // var makeHoverHappen = function() {
+
+    // };
+
 
 $(document).ready(function () {
   $('#content').on('click', '#submitComment', comment_post);
   $('#content').on('click', '#submit-picture-set', create_image_set);
   // $('#content').on('click', '#submitButton', render_pic_to_upload);
+  // $('<img>').on('hover', makeHoverHappen)
+  $("<img>").hover(
+    function() {
+    $("<img>").stop().fadeOut();
+  },
+    function() {
+    $("<img>").stop().fadeIn();
+    });
 });
 
 var router = new Router();

@@ -137,7 +137,7 @@
     </div>
   </div>
 
-    <div id="s3form">
+<div id="s3form">
   <form id='imageUpload' action="http://pixelect-ig.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
     <input id='acl' type="hidden" name="acl" value="public-read" />
     <input id='key' type="hidden" name="key" value="" />
@@ -153,7 +153,6 @@
 </div>
 
 <a class="btn btn-lg btn-primary caro cust" href="#/image_sets/{{image_set.id}}" role="button">Complete Your Image Set</a>
-
 </script>
 
 <script id="usersTemplate" type="text/x-handlebars-template">
@@ -194,15 +193,17 @@
       <h4>All comments:</h4>
       <ul id="bodyOfComments">
         {{#each image_set.comments}}
-          <li> {{this.body}} </li>
+          <li id ="list-o-comments"> {{this.body}} </li>
         {{/each}}
       </ul>
     </div>
-
     <input name="createComment" id="commentBody">
     <button type="submit" id="submitComment" class="btn btn-md btn-primary caro cust" data-id={{image_set.id}}>Create Comment</button>
 </script>
 
+<script id="commentsTemplate" type="text/x-handlebars-template">
+    <li>{{comment}}</li>
+</script>
 
 <script id="aboutTemplate" type="text/x-handlebars-template">
     <h1>Welcome to Pixelect!</h1>
