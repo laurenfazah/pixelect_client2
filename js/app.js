@@ -88,7 +88,7 @@ var Router = Backbone.Router.extend({
             url: 'https://pixelect-rails-api.herokuapp.com/####/' + id,
             type: 'GET'
         }).done(function(response) {
-            console.log(responseJSON);
+            // console.log(responseJSON);
             var template = Handlebars.compile($('#imageSetTemplate').html());
               $('#likesTotal').html(template({
             }));
