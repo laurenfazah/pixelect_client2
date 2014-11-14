@@ -96,7 +96,7 @@
     <div class="container">
       <div class="row" >
       {{#each this.images}}
-        <div class = "col-xs-4" id="popStyle"><img src={{this.image_url}}></div>
+        <div class = "col-xs-4" id="popStyle"><img src={{this.image_url}} class="imageToClick" data-id={{this.id}}></div>
       {{/each}}
       </div>
     </div>
@@ -110,7 +110,7 @@
     <div class="container">
       <div class="row">
       {{#each this.images}}
-        <div class = "col-xs-4" id="recStyle"><img src={{this.image_url}}></div>
+        <div class = "col-xs-4" id="recStyle"><img src={{this.image_url}} class="imageToClick" data-id={{this.id}}></div>
       {{/each}}
       </div>
     </div>
@@ -197,7 +197,7 @@
       <div class="row">
         {{#each image_set.images}}
         <div class = "col-xs-4 click" id="imageSetStyle">
-          <img src={{this.image_url}} data-value={{this.id}} class="click">
+          <img src={{this.image_url}} data-id={{this.id}} class="clickImage">
         </div>
         {{/each}}
       </div>

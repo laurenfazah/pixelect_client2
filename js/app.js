@@ -158,12 +158,30 @@ var Router = Backbone.Router.extend({
       };
 
 
-
+    var create_like = function() {
+         $.ajax({
+                url: 'https://pixelect-rails-api.herokuapp.com/total_likes/' + id,
+                type: 'POST'
+            }).done(function(response) {
+                var template = Handlebars.compile($('#imageSetTemplate').html());
+                  $('#likesTotal').html(template({
+                }));
+            });
+        };
 
 
 $(document).ready(function () {
   $('#content').on('click', '#submitComment', comment_post);
   $('#content').on('click', '#submit-picture-set', create_image_set);
+  $('#pop_script').on('click', '.imageToClick', function() {
+    alert('it worked! this image id is ' + $(this).attr('data-id'));
+  });
+  $('#rec_script').on('click', '.imageToClick', function() {
+    alert('it worked! this image id is ' + $(this).attr('data-id'));
+  });
+   $('#content').on('click', '.clickImage', function() {
+    alert('it worked! this image id is ' + $(this).attr('data-id'));
+  });
 });
 
 var router = new Router();
