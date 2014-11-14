@@ -219,3 +219,19 @@ LABEL.inline {
 	line-height: 1.385em;
 	margin-bottom: 0.769em
 }
+
+#popStyle:hover img{
+	opacity: 0.5;
+}
+
+#recStyle:hover img{
+	opacity: 0.5;
+}
+
+#imageSetStyle:hover img{
+	opacity: 0.5;
+}
+
+
+
+
