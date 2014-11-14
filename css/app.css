@@ -3,9 +3,6 @@
 	list-style-type: none;
 }
 
-html, body {
-}
-
 /* header custom */
 
 #custom_header {
@@ -34,30 +31,6 @@ html, body {
 }
 
 #nav_custom2 {
-	color: #fdfdfd;
-	font-size: 20px;
-	vertical-align: sub;
-}
-
-#nav_custom3  {
-	color: #fdfdfd;
-	font-size: 20px;
-	vertical-align: sub;
-}
-
-#nav_custom4 {
-	color: #fdfdfd;
-	font-size: 20px;
-	vertical-align: sub;
-}
-
-#nav_custom5 {
-	color: #fdfdfd;
-	font-size: 20px;
-	vertical-align: sub;
-}
-
-#nav_custom6 {
 	color: #fdfdfd;
 	font-size: 20px;
 	vertical-align: sub;
@@ -141,10 +114,6 @@ img {
 	width: 300px;
 }
 
-/*#s3input {
-	display: none;
-}*/
-
 #secondaryButton {
 	margin-top: 20px;
 	margin-bottom: 10px;
@@ -159,6 +128,28 @@ img {
 	padding-bottom: 20px;
 	width: 256px;
 }
+
+#popStyle:hover img{
+	opacity: 0.5;
+}
+
+#recStyle:hover img{
+	opacity: 0.5;
+}
+
+#imageSetStyle:hover img{
+	opacity: 0.5;
+}
+
+.about {
+	font-size: 20px;
+}
+
+#exQuestion {
+	color: #265557;
+	font-size: 120%;
+}
+
 /* for search bar: */
 
 INPUT, TEXTAREA, SELECT {
@@ -216,25 +207,4 @@ LABEL.inline {
 	display: inline-block;
 	line-height: 1.385em;
 	margin-bottom: 0.769em
-}
-
-#popStyle:hover img{
-	opacity: 0.5;
-}
-
-#recStyle:hover img{
-	opacity: 0.5;
-}
-
-#imageSetStyle:hover img{
-	opacity: 0.5;
-}
-
-.about {
-	font-size: 20px;
-}
-
-#exQuestion {
-	color: #265557;
-	font-size: 120%;
 }
